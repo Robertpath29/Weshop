@@ -1,6 +1,7 @@
 export type themeType = {
     color: {
         main: string;
+        base: string;
         logo: string;
     };
 
