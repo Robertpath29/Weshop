@@ -9,4 +9,7 @@ export const theme: themeType = {
         main: "'Roboto Slab', serif;",
         logo: "'Oswald', sans-serif;",
     },
+    size: {
+        globalWidth: 1140,
+    },
 };

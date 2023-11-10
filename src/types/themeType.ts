@@ -8,4 +8,7 @@ export type themeType = {
         main: string;
         logo: string;
     };
+    size: {
+        globalWidth: number;
+    };
 };
