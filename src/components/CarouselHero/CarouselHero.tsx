@@ -1,9 +1,15 @@
-import { CarouselHeroStyle } from "./carouselHero.style";
+import {
+    CarouselHeroStyle,
+    SubTitle,
+    Title,
+    TitleStyle,
+} from "./carouselHero.style";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import SlideNextButton from "./SlideNextButton";
 import SlidePrevButton from "./SlidePrevButton";
+import WSButton from "../UI/WSButton/WSButton";
 
 const CarouselHero = () => {
     return (
@@ -15,6 +21,7 @@ const CarouselHero = () => {
                 loop={true}
                 speed={2000}
                 autoplay={{ delay: 3000, disableOnInteraction: false }}
+                simulateTouch={false}
             >
                 <SwiperSlide>
                     <img
@@ -40,6 +47,13 @@ const CarouselHero = () => {
                 <SlideNextButton />
                 <SlidePrevButton />
             </Swiper>
+            <TitleStyle>
+                <Title>fashion is nothing</Title>
+                <SubTitle>
+                    but <span>mischief</span>
+                </SubTitle>
+                <WSButton>shop now</WSButton>
+            </TitleStyle>
         </CarouselHeroStyle>
     );
 };
