@@ -63,3 +63,7 @@ export const SubTitle = styled.h3`
         color: ${() => theme.color.main};
     }
 `;
+
+export const StandardBanner = styled.img`
+    width: ${() => theme.size.globalWidth + "px"};
+`;

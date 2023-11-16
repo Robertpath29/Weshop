@@ -1,5 +1,6 @@
 import {
     CarouselHeroStyle,
+    StandardBanner,
     SubTitle,
     Title,
     TitleStyle,
@@ -10,43 +11,49 @@ import "swiper/css";
 import SlideNextButton from "./SlideNextButton";
 import SlidePrevButton from "./SlidePrevButton";
 import WSButton from "../UI/WSButton/WSButton";
+import { URL_SERVER } from "../../api/axiosQuery";
+import { useGetHeroBannerImgQuery } from "../../redux/store/heroBannerImg/heroBannerImg.api";
 
 const CarouselHero = () => {
+    const { data, error, isLoading } = useGetHeroBannerImgQuery(0);
+
     return (
         <CarouselHeroStyle>
-            <Swiper
-                modules={[Autoplay]}
-                spaceBetween={50}
-                slidesPerView={1}
-                loop={true}
-                speed={2000}
-                autoplay={{ delay: 3000, disableOnInteraction: false }}
-                simulateTouch={false}
-            >
-                <SwiperSlide>
-                    <img
-                        className="imagesSlide"
-                        src="./friendly-smart-basenji-dog-giving-his-paw-close-up-isolated-white_346278-1626.jpg"
-                        alt="1"
-                    />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img
-                        className="imagesSlide"
-                        src="./isolated-happy-smiling-dog-white-background-portrait-4_1562-693.jpg"
-                        alt="1"
-                    />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img
-                        className="imagesSlide"
-                        src="./top-view-pet-accessories_23-2150930427.jpg"
-                        alt="1"
-                    />
-                </SwiperSlide>
-                <SlideNextButton />
-                <SlidePrevButton />
-            </Swiper>
+            {data?.images.length !== 0 ? (
+                <Swiper
+                    modules={[Autoplay]}
+                    spaceBetween={50}
+                    slidesPerView={1}
+                    loop={true}
+                    speed={2000}
+                    autoplay={{ delay: 3000, disableOnInteraction: false }}
+                    simulateTouch={false}
+                >
+                    {data?.images.map((img) => (
+                        <SwiperSlide key={img.id}>
+                            <img
+                                className="imagesSlide"
+                                src={URL_SERVER + img.path}
+                                alt={img.placeholder}
+                            />
+                        </SwiperSlide>
+                    ))}
+                    {data && data?.images.length > 1 ? (
+                        <>
+                            <SlideNextButton />
+                            <SlidePrevButton />
+                        </>
+                    ) : (
+                        <></>
+                    )}
+                </Swiper>
+            ) : (
+                <StandardBanner
+                    src="/images/banner_standard_photo.jpg"
+                    alt="banner"
+                />
+            )}
+
             <TitleStyle>
                 <Title>fashion is nothing</Title>
                 <SubTitle>
