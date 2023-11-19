@@ -8,7 +8,7 @@ export const MensTShirtInformationStyle = styled.div`
 export const GroupStyle = styled.div`
     display: flex;
     align-items: center;
-    margin-top: 100px;
+    margin: 100px 0;
     & > svg {
         margin-bottom: 20px;
         font-size: 3.8rem;
