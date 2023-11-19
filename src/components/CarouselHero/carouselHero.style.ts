@@ -3,7 +3,7 @@ import { theme } from "../../style/theme.style";
 
 export const CarouselHeroStyle = styled.section`
     max-width: ${() => theme.size.globalWidth + "px"};
-    position: absolute;
+    position: relative;
     left: 50%;
     transform: translate(-50%);
     user-select: none;

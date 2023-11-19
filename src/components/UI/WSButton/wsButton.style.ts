@@ -11,6 +11,7 @@ export const WSButtonStyle = styled.button`
     border: none;
     color: ${() => theme.color.base};
     transition: all 0.3s;
+    cursor: pointer;
     &:hover {
         background-color: ${() => lighten(0.1, theme.color.main)};
     }

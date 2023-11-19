@@ -3,6 +3,7 @@ export type themeType = {
         main: string;
         base: string;
         logo: string;
+        MensTShirtBackground: string;
     };
 
     fonts: {
