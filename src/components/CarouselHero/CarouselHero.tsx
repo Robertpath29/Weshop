@@ -59,7 +59,9 @@ const CarouselHero = () => {
                 <SubTitle>
                     but <span>mischief</span>
                 </SubTitle>
-                <WSButton>shop now</WSButton>
+                <WSButton upper onClick={() => {}}>
+                    shop now
+                </WSButton>
             </TitleStyle>
         </CarouselHeroStyle>
     );

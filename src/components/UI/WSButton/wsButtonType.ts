@@ -3,4 +3,7 @@ export type wsButtonType = {
     border?: number;
     backgroundColor?: string;
     color?: string;
+    maxWidth?: number;
+    upper?: boolean;
+    onClick: () => void;
 };

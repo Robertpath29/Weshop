@@ -3,6 +3,7 @@ import { theme } from "../../style/theme.style";
 
 export const HeaderStyle = styled.header`
     background-color: ${() => theme.color.main};
+    height: 125px;
 `;
 
 export const ContainerHeader = styled.div`

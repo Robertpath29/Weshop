@@ -3,21 +3,26 @@ import { theme } from "../../../style/theme.style";
 import { lighten } from "polished";
 
 export const WSButtonStyle = styled.button<{
-    border?: number;
-    backgroundColor?: string;
-    color?: string;
+    $border?: number;
+    $backgroundColor?: string;
+    $color?: string;
+    $maxWidth?: number;
+    $upper?: string;
 }>`
+    max-width: ${(props) =>
+        props.$maxWidth ? props.$maxWidth + "px" : "max-content"};
+    width: 100%;
     padding: 15px 45px;
     position: relative;
-    text-transform: uppercase;
+    text-transform: ${(props) => (props.$upper ? "uppercase" : "none")};
     font-size: 0.9rem;
     z-index: 5;
     font-family: ${() => theme.fonts.main};
     background-color: ${(props) =>
-        props.backgroundColor ? props.backgroundColor : theme.color.main};
+        props.$backgroundColor ? props.$backgroundColor : theme.color.main};
     border: ${(props) =>
-        props.border ? props.border + "px solid black" : "none"};
-    color: ${(props) => (props.color ? props.color : theme.color.base)};
+        props.$border ? props.$border + "px solid black" : "none"};
+    color: ${(props) => (props.$color ? props.$color : theme.color.base)};
     transition: all 0.3s;
     cursor: pointer;
     &:hover {

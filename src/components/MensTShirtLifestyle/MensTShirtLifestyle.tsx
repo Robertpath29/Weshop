@@ -22,6 +22,8 @@ const MensTShirtLifestyle = () => {
                     border={2}
                     backgroundColor="transparent"
                     color="#000000"
+                    upper
+                    onClick={() => {}}
                 >
                     shop now
                 </WSButton>

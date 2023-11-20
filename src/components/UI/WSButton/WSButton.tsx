@@ -7,12 +7,18 @@ const WSButton: FC<wsButtonType> = ({
     border,
     backgroundColor,
     color,
+    maxWidth,
+    upper,
+    onClick,
 }) => {
     return (
         <WSButtonStyle
-            border={border}
-            backgroundColor={backgroundColor}
-            color={color}
+            $border={border}
+            $backgroundColor={backgroundColor}
+            $color={color}
+            $upper={upper ? upper.toString() : undefined}
+            $maxWidth={maxWidth}
+            onClick={onClick}
         >
             {children}
         </WSButtonStyle>
