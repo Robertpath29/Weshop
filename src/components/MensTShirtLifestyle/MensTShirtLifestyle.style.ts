@@ -70,7 +70,7 @@ export const ShopHiddenStyle = styled.div`
     position: absolute;
     top: 281px;
     left: -128px;
-    background-color: ${() => theme.color.MensTShirtBackground};
+    background-color: ${() => theme.color.mensTShirtBackground};
     transition: all 0.3s;
     transform: rotate(345deg);
 `;

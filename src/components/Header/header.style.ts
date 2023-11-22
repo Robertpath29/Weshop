@@ -7,6 +7,7 @@ export const HeaderStyle = styled.header`
 `;
 
 export const ContainerHeader = styled.div`
+    position: relative;
     margin: 0 auto;
     max-width: ${() => theme.size.globalWidth + "px"};
     padding: 17px 0 17px 0;

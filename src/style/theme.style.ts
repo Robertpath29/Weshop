@@ -5,7 +5,8 @@ export const theme: themeType = {
         main: "#48689a",
         base: "#ffffff",
         logo: "#00cdc6",
-        MensTShirtBackground: "#f7f7f7",
+        mensTShirtBackground: "#f7f7f7",
+        navMenuLink: "#3c4852",
     },
     fonts: {
         main: "'Roboto Slab', serif;",
