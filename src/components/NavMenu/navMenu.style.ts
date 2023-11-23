@@ -5,27 +5,19 @@ export const NavMenuStyle = styled.article<{
     $men?: boolean;
     $menuVisibility: boolean;
 }>`
-    max-width: ${() => theme.size.globalWidth + "px"};
     overflow: ${(props) => (props.$menuVisibility ? "visible" : "hidden")};
-    height: ${(props) => (props.$menuVisibility ? "max-content" : 0)};
-    padding: ${(props) =>
-        props.$menuVisibility ? "50px 150px 100px 50px" : "0px 150px 0px 50px"};
+    height: max-content;
     cursor: auto;
     position: absolute;
-    display: flex;
-    justify-content: space-between;
-    z-index: 11;
+    z-index: 1;
     left: 0;
     right: 0;
     top: 120px;
-    background-color: ${() => theme.color.base};
-    color: ${() => theme.color.navMenuLink};
-    font-size: 1rem;
     box-shadow: 0px 3px 10px ${() => theme.color.navMenuLink};
-    transition: all 0.3s;
-
+    transition: height 0.3s;
     &::before {
         content: "";
+        z-index: -1;
         position: absolute;
         width: 50px;
         height: 50px;
@@ -34,23 +26,50 @@ export const NavMenuStyle = styled.article<{
         left: ${(props) => (props.$men ? "455px" : "545px")};
         transform: rotate(45deg);
     }
+`;
 
-    &::after {
+export const NavMenuContainerStyle = styled.div<{
+    $men?: boolean;
+    $menuVisibility: boolean;
+}>`
+    max-width: ${() => theme.size.globalWidth + "px"};
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    color: ${() => theme.color.navMenuLink};
+    height: ${(props) => (props.$menuVisibility ? "max-content" : "0")};
+    padding: ${(props) =>
+        props.$menuVisibility ? "50px 150px 100px 50px" : "0px 150px 0px 50px"};
+    overflow: hidden;
+    background-color: ${() => theme.color.base};
+    font-size: 1rem;
+    transition: all 0.3s;
+    background-image: ${(props) =>
+        props.$men
+            ? "url(./images/getty_506481516_200011512000928031_324666.jpg)"
+            : "url(./images/istockphoto-916092484-612x612.jpg)"};
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    &::before {
         content: "";
-        position: absolute;
-        cursor: pointer;
-        width: 67px;
-        height: 40px;
-        top: -33px;
-        left: ${(props) => (props.$men ? "451px" : "542px")};
-    }
 
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: ${() => theme.color.base};
+        opacity: 0.6;
+    }
     h1 {
         margin: 0;
+        z-index: 1;
     }
     span {
         margin-bottom: 10px;
         cursor: pointer;
+        z-index: 1;
 
         &:hover {
             color: ${() => theme.color.main};
@@ -66,12 +85,19 @@ export const WinterGroupStyle = styled.div`
     display: flex;
     flex-direction: column;
 `;
-export const DiscountGroupStyle = styled.div`
+export const DiscountGroupStyle = styled.div<{ $men?: boolean }>`
     width: 260px;
     position: relative;
     cursor: pointer;
     background-color: #ededed;
     transition: all 0.3s;
+    background-image: ${(props) =>
+        props.$men
+            ? `url("./images/discount_menu_nav.avif")`
+            : `url("./images/discount_women_nav_menu.jpeg")`};
+    background-repeat: no-repeat;
+    background-size: cover;
+
     & > h2 {
         position: absolute;
         margin: 0;
