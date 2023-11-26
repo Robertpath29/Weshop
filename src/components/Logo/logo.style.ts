@@ -7,6 +7,7 @@ export const LogoStyle = styled.div`
     align-items: center;
     max-width: 160px;
     user-select: none;
+    cursor: pointer;
     color: ${() => theme.color.logo};
     font-family: ${() => theme.fonts.logo};
     border: 2px solid ${() => theme.color.logo};

@@ -2,8 +2,10 @@ import styled from "styled-components";
 import { theme } from "../../style/theme.style";
 
 export const HeaderStyle = styled.header`
+    position: relative;
     background-color: ${() => theme.color.main};
     height: 125px;
+    z-index: 11;
 `;
 
 export const ContainerHeader = styled.div`

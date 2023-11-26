@@ -5,5 +5,5 @@ export type wsButtonType = {
     color?: string;
     maxWidth?: number;
     upper?: boolean;
-    onClick: () => void;
+    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };

@@ -17,8 +17,10 @@ import Nav from "../Nav/Nav";
 import Search from "../Search/Search";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import Basket from "../Basket/Basket";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+    const routeLogin = useNavigate();
     return (
         <HeaderStyle>
             <ContainerHeader>
@@ -49,7 +51,13 @@ const Header = () => {
                             <span>USD</span>
                             <MdOutlineKeyboardArrowDown />
                         </LoginGroup>
-                        <span>Login</span>
+                        <span
+                            onClick={() => {
+                                routeLogin("/login");
+                            }}
+                        >
+                            Login
+                        </span>
                     </ContainerGroupLogin>
                     <Basket />
                 </ContainerLogin>
