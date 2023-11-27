@@ -25,7 +25,7 @@ const NotFound404Page = () => {
                     backgroundColor="transparent"
                     border={2}
                     color="black"
-                    maxWidth={350}
+                    maxWidth={"350px"}
                     onClick={() => routeHome("/")}
                 >
                     Back to home

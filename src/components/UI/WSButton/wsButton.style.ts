@@ -6,11 +6,11 @@ export const WSButtonStyle = styled.button<{
     $border?: number;
     $backgroundColor?: string;
     $color?: string;
-    $maxWidth?: number;
+    $maxWidth?: string;
     $upper?: string;
 }>`
     max-width: ${(props) =>
-        props.$maxWidth ? props.$maxWidth + "px" : "max-content"};
+        props.$maxWidth ? props.$maxWidth : "max-content"};
     width: 100%;
     padding: 15px 45px;
     position: relative;

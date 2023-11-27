@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { theme } from "../../style/theme.style";
 
 export const RegisterPageStyle = styled.section`
-    position: relative;
     background-image: url("/images/background_register.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -20,7 +19,7 @@ export const RegisterPageStyle = styled.section`
 `;
 export const ContainerRegisterPageStyle = styled.div`
     position: relative;
-    z-index: 11;
+    z-index: 10;
     padding-top: 20px;
     max-width: ${() => theme.size.globalWidth + "px"};
     margin: 0 auto;

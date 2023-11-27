@@ -43,7 +43,7 @@ const LoginForm = () => {
                         e.preventDefault();
                     }}
                     upper
-                    maxWidth={300}
+                    maxWidth={"300px"}
                 >
                     Login
                 </WSButton>
