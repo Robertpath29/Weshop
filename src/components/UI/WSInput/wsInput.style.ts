@@ -8,4 +8,6 @@ export const WSInputStyle = styled.input`
     height: 40px;
     background-color: rgba(255, 255, 255, 0.7);
     font-size: 1.2rem;
+    border: 1px solid ${() => theme.color.main};
+    color: ${() => theme.color.main};
 `;

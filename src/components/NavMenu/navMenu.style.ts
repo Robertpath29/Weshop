@@ -46,8 +46,8 @@ export const NavMenuContainerStyle = styled.div<{
     transition: all 0.3s;
     background-image: ${(props) =>
         props.$men
-            ? "url(./images/getty_506481516_200011512000928031_324666.jpg)"
-            : "url(./images/istockphoto-916092484-612x612.jpg)"};
+            ? "url(/images/getty_506481516_200011512000928031_324666.jpg)"
+            : "url(/images/istockphoto-916092484-612x612.jpg)"};
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -93,8 +93,8 @@ export const DiscountGroupStyle = styled.div<{ $men?: boolean }>`
     transition: all 0.3s;
     background-image: ${(props) =>
         props.$men
-            ? `url("./images/discount_menu_nav.avif")`
-            : `url("./images/discount_women_nav_menu.jpeg")`};
+            ? `url("/images/discount_menu_nav.avif")`
+            : `url("/images/discount_women_nav_menu.jpeg")`};
     background-repeat: no-repeat;
     background-size: cover;
 

@@ -7,13 +7,17 @@ import {
 } from "./loginForm.style";
 import WSInput from "../UI/WSInput/WSInput";
 import WSButton from "../UI/WSButton/WSButton";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
+    const routeRegister = useNavigate();
     return (
         <LoginFormStyle>
             <ContainerNewCustomer>
                 <h1>New customer?</h1>
-                <span>registration now!</span>
+                <span onClick={() => routeRegister("/login/register")}>
+                    registration now!
+                </span>
             </ContainerNewCustomer>
             <ContainerInput>
                 <label htmlFor="email">Email</label>
