@@ -5,7 +5,7 @@ export const HeaderStyle = styled.header`
     position: relative;
     background-color: ${() => theme.color.main};
     height: 125px;
-    z-index: 11;
+    z-index: 15;
 `;
 
 export const ContainerHeader = styled.div`

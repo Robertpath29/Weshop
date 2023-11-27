@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from "react";
+import React from "react";
 import {
     ContainerBtn,
     ContainerInput,
@@ -21,6 +21,7 @@ const LoginForm = () => {
                     type="email"
                     placeholder="gmail@gmail.com"
                     id="email"
+                    autocomplete="username"
                 />
             </ContainerInput>
             <ContainerInput>
@@ -29,6 +30,7 @@ const LoginForm = () => {
                     type="password"
                     placeholder="qwerty12345"
                     id="password"
+                    autocomplete="current-password"
                 />
             </ContainerInput>
             <ContainerBtn>
