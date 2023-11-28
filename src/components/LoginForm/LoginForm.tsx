@@ -11,9 +11,11 @@ import { useNavigate } from "react-router-dom";
 import { useCreateSessionMutation } from "../../redux/store/session/session.api";
 import Loading from "../Loading/Loading";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import { useAction } from "../../hooks/useAction";
 
 const LoginForm = () => {
     const routeRegister = useNavigate();
+    const { getCurrent_user } = useAction();
     const [dataLogin, setDataLogin] = useState({ email: "", password: "" });
     const [error, setError] = useState<{ status: string; message: string }>();
 
@@ -22,7 +24,9 @@ const LoginForm = () => {
         try {
             const result = await mutate(dataLogin);
             if ("data" in result) {
-                if (result.data.status === "error") {
+                if (result.data.status === "success") {
+                    getCurrent_user(result.data.current_user);
+                } else {
                     setError({
                         status: result.data.status,
                         message: result.data.message,
