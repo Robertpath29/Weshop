@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import { NavGroup, NavStyle } from "./nav.style";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import NavMenu from "../NavMenu/NavMenu";
+import { useNavigate } from "react-router-dom";
 
 const Nav = () => {
     const [menuMenVisibility, setMenuMenVisibility] = useState(false);
     const [menuWomenVisibility, setMenuWomenVisibility] = useState(false);
+    const routeHome = useNavigate();
 
     return (
         <NavStyle>
-            <span>Home</span>
+            <span onClick={() => routeHome("/")}>Home</span>
             <NavGroup>
                 <span>Shop</span>
                 <MdOutlineKeyboardArrowDown />

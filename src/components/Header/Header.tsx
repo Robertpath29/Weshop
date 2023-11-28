@@ -18,9 +18,12 @@ import Search from "../Search/Search";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import Basket from "../Basket/Basket";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { reducersType } from "../../redux/combineReducer/combineReducer";
 
 const Header = () => {
     const routeLogin = useNavigate();
+    const user = useSelector((state: reducersType) => state.user);
     return (
         <HeaderStyle>
             <ContainerHeader>
@@ -51,13 +54,20 @@ const Header = () => {
                             <span>USD</span>
                             <MdOutlineKeyboardArrowDown />
                         </LoginGroup>
-                        <span
-                            onClick={() => {
-                                routeLogin("/login");
-                            }}
-                        >
-                            Login
-                        </span>
+                        {user.name ? (
+                            <LoginGroup>
+                                <span>{user.name}</span>
+                                <MdOutlineKeyboardArrowDown />
+                            </LoginGroup>
+                        ) : (
+                            <span
+                                onClick={() => {
+                                    routeLogin("/login");
+                                }}
+                            >
+                                Login
+                            </span>
+                        )}
                     </ContainerGroupLogin>
                     <Basket />
                 </ContainerLogin>

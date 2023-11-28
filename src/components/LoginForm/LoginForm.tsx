@@ -15,6 +15,7 @@ import { useAction } from "../../hooks/useAction";
 
 const LoginForm = () => {
     const routeRegister = useNavigate();
+    const routeHome = useNavigate();
     const { getCurrent_user } = useAction();
     const [dataLogin, setDataLogin] = useState({ email: "", password: "" });
     const [error, setError] = useState<{ status: string; message: string }>();
@@ -25,7 +26,10 @@ const LoginForm = () => {
             const result = await mutate(dataLogin);
             if ("data" in result) {
                 if (result.data.status === "success") {
-                    getCurrent_user(result.data.current_user);
+                    routeHome("/");
+                    setTimeout(() => {
+                        getCurrent_user(result.data.current_user);
+                    }, 100);
                 } else {
                     setError({
                         status: result.data.status,
