@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     ContainerBtn,
     ContainerInput,
@@ -8,9 +8,32 @@ import {
 import WSInput from "../UI/WSInput/WSInput";
 import WSButton from "../UI/WSButton/WSButton";
 import { useNavigate } from "react-router-dom";
+import { useCreateSessionMutation } from "../../redux/store/session/session.api";
+import Loading from "../Loading/Loading";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 const LoginForm = () => {
     const routeRegister = useNavigate();
+    const [dataLogin, setDataLogin] = useState({ email: "", password: "" });
+    const [error, setError] = useState<{ status: string; message: string }>();
+
+    const [mutate, { isLoading }] = useCreateSessionMutation();
+    const newSession = async () => {
+        try {
+            const result = await mutate(dataLogin);
+            if ("data" in result) {
+                if (result.data.status === "error") {
+                    setError({
+                        status: result.data.status,
+                        message: result.data.message,
+                    });
+                }
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <LoginFormStyle>
             <ContainerNewCustomer>
@@ -26,6 +49,13 @@ const LoginForm = () => {
                     placeholder="gmail@gmail.com"
                     id="email"
                     autocomplete="username"
+                    onChange={(e) => {
+                        setError({
+                            status: "",
+                            message: "",
+                        });
+                        setDataLogin({ ...dataLogin, email: e.target.value });
+                    }}
                 />
             </ContainerInput>
             <ContainerInput>
@@ -35,19 +65,37 @@ const LoginForm = () => {
                     placeholder="qwerty12345"
                     id="password"
                     autocomplete="current-password"
+                    onChange={(e) => {
+                        setError({
+                            status: "",
+                            message: "",
+                        });
+                        setDataLogin({
+                            ...dataLogin,
+                            password: e.target.value,
+                        });
+                    }}
                 />
             </ContainerInput>
-            <ContainerBtn>
-                <WSButton
-                    onClick={(e) => {
-                        e.preventDefault();
-                    }}
-                    upper
-                    maxWidth={"300px"}
-                >
-                    Login
-                </WSButton>
-            </ContainerBtn>
+            {error?.status === "error" && (
+                <ErrorMessage message={error.message} />
+            )}
+            {isLoading ? (
+                <Loading />
+            ) : (
+                <ContainerBtn>
+                    <WSButton
+                        onClick={(e) => {
+                            e.preventDefault();
+                            newSession();
+                        }}
+                        upper
+                        maxWidth={"300px"}
+                    >
+                        Login
+                    </WSButton>
+                </ContainerBtn>
+            )}
         </LoginFormStyle>
     );
 };

@@ -9,7 +9,7 @@ import {
 import WSInput from "../UI/WSInput/WSInput";
 import WSButton from "../UI/WSButton/WSButton";
 import { useNavigate } from "react-router-dom";
-import { REGISTER_NEW_USER, axiosPost } from "../../api/axiosQuery";
+import { REGISTER_NEW_USER_URL, axiosPost } from "../../api/axiosQuery";
 import Loading from "../Loading/Loading";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import FlashMessage from "../FlashMessage/FlashMessage";
@@ -39,21 +39,25 @@ const RegisterForm = () => {
 
     const postNewUser = async () => {
         isLoading(true);
-        const status = await axiosPost(
-            REGISTER_NEW_USER,
-            dataFormRegister,
-            isLoading
-        );
-        setData(status.data);
-        if (status.data.status === "success")
-            setDataFormRegister({
-                user: {
-                    name: "",
-                    email: "",
-                    password: "",
-                    password_confirmation: "",
-                },
-            });
+        try {
+            const status = await axiosPost(
+                REGISTER_NEW_USER_URL,
+                dataFormRegister,
+                isLoading
+            );
+            setData(status.data);
+            if (status.data.status === "success")
+                setDataFormRegister({
+                    user: {
+                        name: "",
+                        email: "",
+                        password: "",
+                        password_confirmation: "",
+                    },
+                });
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
