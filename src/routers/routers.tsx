@@ -11,3 +11,7 @@ export const appPages: routersType = [
     { path: "/login", element: <LoginPage /> },
     { path: "/login/register", element: <RegisterPage /> },
 ];
+export const appPagesUser: routersType = [
+    { path: "/", element: <MainPage /> },
+    { path: "*", element: <NotFound404Page /> },
+];

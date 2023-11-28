@@ -1,18 +1,36 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { appPages } from "../routers/routers";
+import { appPages, appPagesUser } from "../routers/routers";
+import { useSelector } from "react-redux";
+import { reducersType } from "../redux/combineReducer/combineReducer";
 
 function App() {
+    const user = useSelector((state: reducersType) => state.user);
+
+    const userPresent = useMemo(() => {
+        if (user.email) return true;
+
+        return false;
+    }, [user]);
+
     return (
         <BrowserRouter>
             <Routes>
-                {appPages.map((route) => (
-                    <Route
-                        path={route.path}
-                        element={route.element}
-                        key={route.path}
-                    />
-                ))}
+                {userPresent
+                    ? appPagesUser.map((route) => (
+                          <Route
+                              path={route.path}
+                              element={route.element}
+                              key={route.path}
+                          />
+                      ))
+                    : appPages.map((route) => (
+                          <Route
+                              path={route.path}
+                              element={route.element}
+                              key={route.path}
+                          />
+                      ))}
             </Routes>
         </BrowserRouter>
     );

@@ -8,3 +8,5 @@ export const reducers = combineReducers({
     [heroBannerImgApi.reducerPath]: heroBannerImgApi.reducer,
     [sessionApi.reducerPath]: sessionApi.reducer,
 });
+
+export type reducersType = ReturnType<typeof reducers>;
