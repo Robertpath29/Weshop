@@ -10,12 +10,17 @@ export const sessionApi = createApi({
     endpoints: (build) => ({
         createSession: build.mutation<
             sessionType,
-            { email: string; password: string }
+            {
+                email?: string;
+                password?: string;
+                id?: number;
+                remember_token?: string;
+            }
         >({
-            query: ({ email, password }) => ({
+            query: ({ email, password, id, remember_token }) => ({
                 url: SESSION_URL,
                 method: "POST",
-                body: { email, password },
+                body: { email, password, id, remember_token },
             }),
         }),
     }),

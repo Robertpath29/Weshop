@@ -8,40 +8,20 @@ import {
 import WSInput from "../UI/WSInput/WSInput";
 import WSButton from "../UI/WSButton/WSButton";
 import { useNavigate } from "react-router-dom";
-import { useCreateSessionMutation } from "../../redux/store/session/session.api";
 import Loading from "../Loading/Loading";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import { useAction } from "../../hooks/useAction";
+import { useSession } from "../../hooks/useSession";
 
 const LoginForm = () => {
     const routeRegister = useNavigate();
     const routeHome = useNavigate();
-    const { getCurrent_user } = useAction();
     const [dataLogin, setDataLogin] = useState({ email: "", password: "" });
     const [error, setError] = useState<{ status: string; message: string }>();
-
-    const [mutate, { isLoading }] = useCreateSessionMutation();
-    const newSession = async () => {
-        try {
-            const result = await mutate(dataLogin);
-            if ("data" in result) {
-                if (result.data.status === "success") {
-                    routeHome("/");
-                    setTimeout(() => {
-                        getCurrent_user(result.data.current_user);
-                    }, 100);
-                } else {
-                    setError({
-                        status: result.data.status,
-                        message: result.data.message,
-                    });
-                }
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
+    const { createSession, isLoading } = useSession(
+        setError,
+        undefined,
+        routeHome
+    );
     return (
         <LoginFormStyle>
             <ContainerNewCustomer>
@@ -95,7 +75,7 @@ const LoginForm = () => {
                     <WSButton
                         onClick={(e) => {
                             e.preventDefault();
-                            newSession();
+                            createSession(dataLogin);
                         }}
                         upper
                         maxWidth={"300px"}

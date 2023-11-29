@@ -1,36 +1,32 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
-import { appPages, appPagesUser } from "../routers/routers";
-import { useSelector } from "react-redux";
-import { reducersType } from "../redux/combineReducer/combineReducer";
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { appPages, zeroPage } from "../routers/routers";
+import { getUserCookie } from "../utils/getUserCookie";
+import { useSession } from "../hooks/useSession";
 
 function App() {
-    const user = useSelector((state: reducersType) => state.user);
+    const [pages, setPages] = useState(zeroPage);
+    const { createSession } = useSession(undefined, setPages);
 
-    const userPresent = useMemo(() => {
-        if (user.email) return true;
-
-        return false;
-    }, [user]);
+    useEffect(() => {
+        const dataCookie = getUserCookie();
+        if (dataCookie.remember_token) {
+            createSession(undefined, dataCookie);
+        } else {
+            setPages(appPages);
+        }
+    }, []);
 
     return (
         <BrowserRouter>
             <Routes>
-                {userPresent
-                    ? appPagesUser.map((route) => (
-                          <Route
-                              path={route.path}
-                              element={route.element}
-                              key={route.path}
-                          />
-                      ))
-                    : appPages.map((route) => (
-                          <Route
-                              path={route.path}
-                              element={route.element}
-                              key={route.path}
-                          />
-                      ))}
+                {pages.map((route) => (
+                    <Route
+                        path={route.path}
+                        element={route.element}
+                        key={route.path}
+                    />
+                ))}
             </Routes>
         </BrowserRouter>
     );

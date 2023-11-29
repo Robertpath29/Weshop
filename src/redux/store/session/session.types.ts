@@ -4,4 +4,5 @@ export type sessionType = {
     status: string;
     current_user: userType;
     message: string;
+    remember_token: string;
 };
