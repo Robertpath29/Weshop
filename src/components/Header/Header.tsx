@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     ContactGroup,
     ContainerContact,
@@ -20,10 +20,12 @@ import Basket from "../Basket/Basket";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { reducersType } from "../../redux/combineReducer/combineReducer";
+import UserMenu from "../UserMenu/UserMenu";
 
 const Header = () => {
     const routeLogin = useNavigate();
     const user = useSelector((state: reducersType) => state.user);
+    const [visibility, isVisibility] = useState(false);
     return (
         <HeaderStyle>
             <ContainerHeader>
@@ -55,9 +57,13 @@ const Header = () => {
                             <MdOutlineKeyboardArrowDown />
                         </LoginGroup>
                         {user.name ? (
-                            <LoginGroup>
+                            <LoginGroup
+                                onMouseOver={() => isVisibility(true)}
+                                onMouseOut={() => isVisibility(false)}
+                            >
                                 <span>{user.name}</span>
                                 <MdOutlineKeyboardArrowDown />
+                                <UserMenu visibility={visibility} />
                             </LoginGroup>
                         ) : (
                             <span

@@ -56,6 +56,7 @@ export const ContainerLogin = styled.div`
 `;
 
 export const LoginGroup = styled.div`
+    position: relative;
     display: flex;
     align-items: center;
     cursor: pointer;
