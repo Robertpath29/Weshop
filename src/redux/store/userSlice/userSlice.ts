@@ -10,6 +10,10 @@ export const userSlice = createSlice({
         getCurrent_user: (state, { payload }) => {
             Object.assign(state, payload);
         },
+
+        deleteCurrent_user: () => {
+            return initialState;
+        },
     },
 });
 

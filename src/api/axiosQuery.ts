@@ -11,7 +11,7 @@ export async function axiosGet(
     isLoading?: React.Dispatch<React.SetStateAction<boolean>>
 ) {
     return await axios
-        .get(url, params)
+        .get(url, { params })
         .then((response) => response)
         .catch((e) => e.message)
         .finally(() => {
@@ -25,6 +25,20 @@ export async function axiosPost(
 ) {
     return await axios
         .post(url, data)
+        .then((response) => response)
+        .catch((e) => e.message)
+        .finally(() => {
+            if (isLoading) isLoading(false);
+        });
+}
+
+export async function axiosDelete(
+    url: string,
+    params?: object,
+    isLoading?: React.Dispatch<React.SetStateAction<boolean>>
+) {
+    return await axios
+        .delete(url, { params })
         .then((response) => response)
         .catch((e) => e.message)
         .finally(() => {
