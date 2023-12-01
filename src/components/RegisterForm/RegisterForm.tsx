@@ -9,23 +9,13 @@ import {
 import WSInput from "../UI/WSInput/WSInput";
 import WSButton from "../UI/WSButton/WSButton";
 import { useNavigate } from "react-router-dom";
-import { REGISTER_NEW_USER_URL, axiosPost } from "../../api/axiosQuery";
 import Loading from "../Loading/Loading";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import FlashMessage from "../FlashMessage/FlashMessage";
+import { useUser } from "../../hooks/useUser";
 
 const RegisterForm = () => {
     const routeLogin = useNavigate();
-    const [data, setData] = useState<{
-        status: string;
-        message: string;
-        warning?: {
-            name?: string;
-            email?: string;
-            password?: string;
-            password_confirmation?: string;
-        };
-    }>();
     const [dataFormRegister, setDataFormRegister] = useState({
         user: {
             name: "",
@@ -34,35 +24,10 @@ const RegisterForm = () => {
             password_confirmation: "",
         },
     });
-
-    const [loading, isLoading] = useState(false);
-
-    const postNewUser = async () => {
-        isLoading(true);
-        try {
-            const status = await axiosPost(
-                REGISTER_NEW_USER_URL,
-                dataFormRegister,
-                isLoading
-            );
-            setData(status.data);
-            if (status.data.status === "success")
-                setDataFormRegister({
-                    user: {
-                        name: "",
-                        email: "",
-                        password: "",
-                        password_confirmation: "",
-                    },
-                });
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
+    const { crateUser, response, loading, setResponse } = useUser();
     return (
         <RegisterFormStyle>
-            {data?.status === "success" && (
+            {response?.status === "success" && (
                 <FlashMessage message="You have registered!" route="/login" />
             )}
             <ContainerFormStyle>
@@ -73,8 +38,8 @@ const RegisterForm = () => {
                     </span>
                 </ContainerOldCustomer>
                 <hr />
-                {data?.status === "error" && (
-                    <ErrorMessage message={data?.message} />
+                {response?.status === "error" && (
+                    <ErrorMessage message={response?.message} />
                 )}
                 <ContainerInputStyle>
                     <label htmlFor="name">Name</label>
@@ -84,9 +49,9 @@ const RegisterForm = () => {
                         placeholder="Alex"
                         autocomplete="username"
                         value={dataFormRegister.user.name}
-                        warning={data?.warning?.name}
+                        warning={response?.warning?.name}
                         onChange={(e) => {
-                            setData({ status: "", message: "" });
+                            setResponse({ status: "", message: "" });
                             setDataFormRegister({
                                 ...dataFormRegister,
                                 user: {
@@ -105,9 +70,9 @@ const RegisterForm = () => {
                         placeholder="gmail@gmail.com"
                         autocomplete="username"
                         value={dataFormRegister.user.email}
-                        warning={data?.warning?.email}
+                        warning={response?.warning?.email}
                         onChange={(e) => {
-                            setData({ status: "", message: "" });
+                            setResponse({ status: "", message: "" });
                             setDataFormRegister({
                                 ...dataFormRegister,
                                 user: {
@@ -126,9 +91,9 @@ const RegisterForm = () => {
                         placeholder="qwerty12345"
                         autocomplete="current-password"
                         value={dataFormRegister.user.password}
-                        warning={data?.warning?.password}
+                        warning={response?.warning?.password}
                         onChange={(e) => {
-                            setData({ status: "", message: "" });
+                            setResponse({ status: "", message: "" });
                             setDataFormRegister({
                                 ...dataFormRegister,
                                 user: {
@@ -147,9 +112,9 @@ const RegisterForm = () => {
                         placeholder="qwerty12345"
                         autocomplete="current-password"
                         value={dataFormRegister.user.password_confirmation}
-                        warning={data?.warning?.password_confirmation}
+                        warning={response?.warning?.password_confirmation}
                         onChange={(e) => {
-                            setData({ status: "", message: "" });
+                            setResponse({ status: "", message: "" });
                             setDataFormRegister({
                                 ...dataFormRegister,
                                 user: {
@@ -167,7 +132,10 @@ const RegisterForm = () => {
                         <WSButton
                             onClick={(e) => {
                                 e.preventDefault();
-                                postNewUser();
+                                crateUser(
+                                    setDataFormRegister,
+                                    dataFormRegister
+                                );
                             }}
                             upper
                             maxWidth={"300px"}

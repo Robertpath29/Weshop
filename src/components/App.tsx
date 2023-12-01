@@ -16,7 +16,7 @@ function App() {
         if (dataCookie.remember_token && !current_user.name) {
             createSession(undefined, dataCookie);
         } else {
-            setPages(appPages);
+            if (!current_user.name) setPages(appPages);
         }
     }, [current_user]);
 
