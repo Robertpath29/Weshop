@@ -4,7 +4,7 @@ import { theme } from "../../style/theme.style";
 export const UserMenuStyle = styled.div<{
     $visibility: boolean;
 }>`
-    width: 180px;
+    width: 120px;
     height: ${(props) => (props.$visibility ? "100px" : "0")};
     position: absolute;
     display: flex;
@@ -12,7 +12,7 @@ export const UserMenuStyle = styled.div<{
     justify-content: end;
     z-index: 11;
     top: 15px;
-    left: -120px;
+    left: -60px;
     background-color: ${() => theme.color.base};
     color: black;
     overflow: hidden;

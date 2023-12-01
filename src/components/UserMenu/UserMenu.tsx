@@ -12,6 +12,7 @@ const UserMenu: FC<userMenuType> = ({ visibility }) => {
     const { deleteCurrent_user } = useAction();
     const current_user = useSelector((state: reducersType) => state.user);
     const routeSettingUser = useNavigate();
+    const routeHome = useNavigate();
     return (
         <UserMenuStyle $visibility={visibility}>
             <ContainerMenuStyle>
@@ -21,12 +22,17 @@ const UserMenu: FC<userMenuType> = ({ visibility }) => {
                         routeSettingUser("/user/setting");
                     }}
                 >
-                    Personal settings
+                    Settings
                 </span>
             </ContainerMenuStyle>
             <ContainerMenuStyle>
                 <IoLogOutOutline />
-                <span onClick={() => logOut(deleteCurrent_user, current_user)}>
+                <span
+                    onClick={() => {
+                        logOut(deleteCurrent_user, current_user);
+                        routeHome("/");
+                    }}
+                >
                     LogOut
                 </span>
             </ContainerMenuStyle>

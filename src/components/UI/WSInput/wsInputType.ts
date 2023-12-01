@@ -6,4 +6,5 @@ export type WSInputType = {
     autocomplete?: string;
     warning?: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    disabled?: boolean;
 };

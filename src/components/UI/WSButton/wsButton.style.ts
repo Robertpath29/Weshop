@@ -32,3 +32,10 @@ export const WSButtonStyle = styled.button<{
         background-color: ${() => theme.color.main};
     }
 `;
+
+export const ContainerBtnStyle = styled.div`
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+`;

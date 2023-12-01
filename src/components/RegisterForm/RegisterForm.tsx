@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import {
-    ContainerBtnStyle,
     ContainerFormStyle,
-    ContainerInputStyle,
     ContainerOldCustomer,
     RegisterFormStyle,
 } from "./registerForm.style";
@@ -13,6 +11,8 @@ import Loading from "../Loading/Loading";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import FlashMessage from "../FlashMessage/FlashMessage";
 import { useUser } from "../../hooks/useUser";
+import { ContainerInputStyle } from "../UI/WSInput/wsInput.style";
+import { ContainerBtnStyle } from "../FlashMessage/flashMessage.style";
 
 const RegisterForm = () => {
     const routeLogin = useNavigate();

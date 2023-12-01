@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { appPages, zeroPage } from "../routers/routers";
+import { appPages, appPagesUser, zeroPage } from "../routers/routers";
 import { getUserCookie } from "../utils/getUserCookie";
 import { useSession } from "../hooks/useSession";
 import { useSelector } from "react-redux";
@@ -16,7 +16,11 @@ function App() {
         if (dataCookie.remember_token && !current_user.name) {
             createSession(undefined, dataCookie);
         } else {
-            if (!current_user.name) setPages(appPages);
+            if (!current_user.name) {
+                setPages(appPages);
+            } else {
+                setPages(appPagesUser);
+            }
         }
     }, [current_user]);
 

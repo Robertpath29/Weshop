@@ -10,6 +10,7 @@ const WSInput: FC<WSInputType> = ({
     onChange,
     value,
     warning,
+    disabled,
 }) => {
     return (
         <WSInputStyle
@@ -20,6 +21,7 @@ const WSInput: FC<WSInputType> = ({
             onChange={onChange}
             value={value}
             $errorBorder={warning}
+            disabled={disabled}
         ></WSInputStyle>
     );
 };

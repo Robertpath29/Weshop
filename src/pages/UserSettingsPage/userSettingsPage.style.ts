@@ -6,4 +6,5 @@ export const UserSettingsPageStyle = styled.section``;
 export const ContainerUserSettingsStyle = styled.div`
     max-width: ${() => theme.size.globalWidth + "px"};
     margin: 0 auto;
+    display: flex;
 `;
