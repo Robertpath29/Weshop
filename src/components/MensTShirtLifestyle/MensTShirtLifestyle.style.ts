@@ -12,7 +12,7 @@ export const BlockShopStyle = styled.div`
     height: 500px;
     overflow: hidden;
     border-bottom: 5px solid white;
-    background-image: url("./images/mens-t-shirt3.webp");
+    background-image: url("/images/mens-t-shirt3.webp");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 550px;
@@ -128,7 +128,7 @@ export const BlockLifestyle = styled.div`
         left: 0;
         right: 0;
         background-color: white;
-        background-image: url("./images/mens-t-shirt2.webp");
+        background-image: url("/images/mens-t-shirt2.webp");
         background-size: 600px;
         background-position: center;
         background-repeat: no-repeat;

@@ -12,7 +12,7 @@ export const MensTShirtCardCollectionStyle = styled.div`
     background-color: ${() => theme.color.base};
     border: 5px solid #ededed;
     transition: all 0.3s;
-    background-image: url("./images/collection.webp");
+    background-image: url("/images/collection.webp");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: 40px;
@@ -25,7 +25,7 @@ export const MensTShirtCardDiscountStyle = styled(
 )`
     display: flex;
     align-items: center;
-    background-image: url("./images/sale_discount.jpeg");
+    background-image: url("/images/sale_discount.jpeg");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: right;

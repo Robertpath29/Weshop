@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../style/theme.style";
+import { important } from "polished";
 
 export const WSInputStyle = styled.input<{
     $errorBorder?: string;
@@ -12,7 +13,7 @@ export const WSInputStyle = styled.input<{
     background-color: rgba(255, 255, 255, 0.7);
     font-size: 1.2rem;
     border: 1px solid
-        ${(props) => (props.$errorBorder ? "red" : theme.color.main)};
+        ${(props) => (props.$errorBorder ? "red !important" : theme.color.main)};
     color: ${() => theme.color.main};
 `;
 
@@ -30,5 +31,6 @@ export const ContainerInputStyle = styled.div<{ $disabled?: boolean }>`
         border: 1px solid
             ${(props) => (props.$disabled ? "gray" : theme.color.main)};
         cursor: ${(props) => (props.$disabled ? "not-allowed" : "auto")};
+        color: ${(props) => (props.$disabled ? "gray" : theme.color.main)};
     }
 `;
