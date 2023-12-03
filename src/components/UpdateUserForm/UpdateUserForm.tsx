@@ -25,8 +25,12 @@ const UpdateUserForm = () => {
     const [dataFormUpdate, setDataFormUpdate] = useState({
         name: current_user.name,
         email: current_user.email,
+        last_name: current_user.last_name || "",
+        date_of_birth: current_user.date_of_birth || "",
+        country: current_user.country || "",
+        city: current_user.city || "",
+        address: current_user.address || "",
     });
-
     return (
         <UpdateUserFormStyle>
             <ContainerFormUpdateStyle>
@@ -38,7 +42,6 @@ const UpdateUserForm = () => {
                     <WSInput
                         type="text"
                         id="name"
-                        placeholder="Alex"
                         autocomplete="username"
                         disabled={disabled}
                         value={dataFormUpdate.name}
@@ -52,12 +55,85 @@ const UpdateUserForm = () => {
                     />
                 </ContainerInputStyle>
                 <ContainerInputStyle $disabled={disabled}>
+                    <label htmlFor="lastName">last name</label>
+                    <WSInput
+                        type="text"
+                        id="lastName"
+                        disabled={disabled}
+                        value={dataFormUpdate.last_name}
+                        onChange={(e) => {
+                            setDataFormUpdate({
+                                ...dataFormUpdate,
+                                last_name: e.target.value,
+                            });
+                        }}
+                    />
+                </ContainerInputStyle>
+                <ContainerInputStyle $disabled={disabled}>
+                    <label htmlFor="dateOfBirth">Date of birth</label>
+                    <WSInput
+                        type="date"
+                        id="dateOfBirth"
+                        disabled={disabled}
+                        value={dataFormUpdate.date_of_birth}
+                        onChange={(e) => {
+                            setDataFormUpdate({
+                                ...dataFormUpdate,
+                                date_of_birth: e.target.value,
+                            });
+                        }}
+                    />
+                </ContainerInputStyle>
+                <ContainerInputStyle $disabled={disabled}>
+                    <label htmlFor="country">Country</label>
+                    <WSInput
+                        type="text"
+                        id="country"
+                        disabled={disabled}
+                        value={dataFormUpdate.country}
+                        onChange={(e) => {
+                            setDataFormUpdate({
+                                ...dataFormUpdate,
+                                country: e.target.value,
+                            });
+                        }}
+                    />
+                </ContainerInputStyle>
+                <ContainerInputStyle $disabled={disabled}>
+                    <label htmlFor="city">City</label>
+                    <WSInput
+                        type="text"
+                        id="city"
+                        disabled={disabled}
+                        value={dataFormUpdate.city}
+                        onChange={(e) => {
+                            setDataFormUpdate({
+                                ...dataFormUpdate,
+                                city: e.target.value,
+                            });
+                        }}
+                    />
+                </ContainerInputStyle>
+                <ContainerInputStyle $disabled={disabled}>
+                    <label htmlFor="address">Address</label>
+                    <WSInput
+                        type="text"
+                        id="address"
+                        disabled={disabled}
+                        value={dataFormUpdate.address}
+                        onChange={(e) => {
+                            setDataFormUpdate({
+                                ...dataFormUpdate,
+                                address: e.target.value,
+                            });
+                        }}
+                    />
+                </ContainerInputStyle>
+                <ContainerInputStyle $disabled={disabled}>
                     <label htmlFor="email">Email</label>
                     <WSInput
                         type="email"
                         id="email"
-                        placeholder="gmail@gmail.com"
-                        autocomplete="username"
                         disabled={disabled}
                         value={dataFormUpdate.email}
                         warning={response?.warning?.email}
