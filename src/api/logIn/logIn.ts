@@ -16,7 +16,7 @@ export const logIn: logInType = (
             if (dataLogin) {
                 if (routeHome) routeHome("/");
                 saveUserCookie(
-                    result.data.current_user.id,
+                    result.data.current_user?.id,
                     result.data.remember_token
                 );
             }
@@ -26,7 +26,7 @@ export const logIn: logInType = (
                 getCurrent_user(result.data.current_user);
             }, 100);
         } else {
-            if (setError && dataLogin) {
+            if (setError && dataLogin && result.data.message) {
                 setError({
                     status: result.data.status,
                     message: result.data.message,

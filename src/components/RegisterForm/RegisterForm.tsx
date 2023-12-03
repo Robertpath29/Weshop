@@ -17,12 +17,10 @@ import { ContainerBtnStyle } from "../FlashMessage/flashMessage.style";
 const RegisterForm = () => {
     const routeLogin = useNavigate();
     const [dataFormRegister, setDataFormRegister] = useState({
-        user: {
-            name: "",
-            email: "",
-            password: "",
-            password_confirmation: "",
-        },
+        name: "",
+        email: "",
+        password: "",
+        password_confirmation: "",
     });
     const { crateUser, response, loading, setResponse } = useUser();
     return (
@@ -48,16 +46,13 @@ const RegisterForm = () => {
                         id="name"
                         placeholder="Alex"
                         autocomplete="username"
-                        value={dataFormRegister.user.name}
+                        value={dataFormRegister.name}
                         warning={response?.warning?.name}
                         onChange={(e) => {
                             setResponse({ status: "", message: "" });
                             setDataFormRegister({
                                 ...dataFormRegister,
-                                user: {
-                                    ...dataFormRegister.user,
-                                    name: e.target.value,
-                                },
+                                name: e.target.value,
                             });
                         }}
                     />
@@ -69,16 +64,13 @@ const RegisterForm = () => {
                         id="email"
                         placeholder="gmail@gmail.com"
                         autocomplete="username"
-                        value={dataFormRegister.user.email}
+                        value={dataFormRegister.email}
                         warning={response?.warning?.email}
                         onChange={(e) => {
                             setResponse({ status: "", message: "" });
                             setDataFormRegister({
                                 ...dataFormRegister,
-                                user: {
-                                    ...dataFormRegister.user,
-                                    email: e.target.value,
-                                },
+                                email: e.target.value,
                             });
                         }}
                     />
@@ -90,16 +82,13 @@ const RegisterForm = () => {
                         id="password"
                         placeholder="qwerty12345"
                         autocomplete="current-password"
-                        value={dataFormRegister.user.password}
+                        value={dataFormRegister.password}
                         warning={response?.warning?.password}
                         onChange={(e) => {
                             setResponse({ status: "", message: "" });
                             setDataFormRegister({
                                 ...dataFormRegister,
-                                user: {
-                                    ...dataFormRegister.user,
-                                    password: e.target.value,
-                                },
+                                password: e.target.value,
                             });
                         }}
                     />
@@ -111,16 +100,13 @@ const RegisterForm = () => {
                         id="password-confirm"
                         placeholder="qwerty12345"
                         autocomplete="current-password"
-                        value={dataFormRegister.user.password_confirmation}
+                        value={dataFormRegister.password_confirmation}
                         warning={response?.warning?.password_confirmation}
                         onChange={(e) => {
                             setResponse({ status: "", message: "" });
                             setDataFormRegister({
                                 ...dataFormRegister,
-                                user: {
-                                    ...dataFormRegister.user,
-                                    password_confirmation: e.target.value,
-                                },
+                                password_confirmation: e.target.value,
                             });
                         }}
                     />

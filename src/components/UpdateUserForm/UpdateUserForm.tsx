@@ -19,13 +19,12 @@ const UpdateUserForm = () => {
     const { changeUser, response, loading } = useUser();
     useEffect(() => {
         isDisabled(true);
+        if (response?.status === "error") isDisabled(false);
     }, [response]);
 
     const [dataFormUpdate, setDataFormUpdate] = useState({
-        user: {
-            name: current_user.name,
-            email: current_user.email,
-        },
+        name: current_user.name,
+        email: current_user.email,
     });
 
     return (
@@ -42,15 +41,12 @@ const UpdateUserForm = () => {
                         placeholder="Alex"
                         autocomplete="username"
                         disabled={disabled}
-                        value={dataFormUpdate.user.name}
+                        value={dataFormUpdate.name}
                         warning={response?.warning?.name}
                         onChange={(e) => {
                             setDataFormUpdate({
                                 ...dataFormUpdate,
-                                user: {
-                                    ...dataFormUpdate.user,
-                                    name: e.target.value,
-                                },
+                                name: e.target.value,
                             });
                         }}
                     />
@@ -63,15 +59,12 @@ const UpdateUserForm = () => {
                         placeholder="gmail@gmail.com"
                         autocomplete="username"
                         disabled={disabled}
-                        value={dataFormUpdate.user.email}
+                        value={dataFormUpdate.email}
                         warning={response?.warning?.email}
                         onChange={(e) => {
                             setDataFormUpdate({
                                 ...dataFormUpdate,
-                                user: {
-                                    ...dataFormUpdate.user,
-                                    email: e.target.value,
-                                },
+                                email: e.target.value,
                             });
                         }}
                     />

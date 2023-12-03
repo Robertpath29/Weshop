@@ -1,5 +1,5 @@
 import { ActionCreatorWithoutPayload } from "@reduxjs/toolkit";
-import { userType } from "../../redux/store/userSlice/userSlice.types";
+import { userType } from "../../types/user.types";
 
 export type logOutType = {
     (

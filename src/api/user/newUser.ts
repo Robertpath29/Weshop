@@ -9,16 +9,18 @@ export const newUser: newUserType = async (
     dataFormRegister
 ) => {
     try {
-        const status = await axiosPost(USER_URL, dataFormRegister, isLoading);
+        const status = await axiosPost(
+            USER_URL,
+            { user: dataFormRegister },
+            isLoading
+        );
         setData(status.data);
         if (status.data.status === "success")
             setDataFormRegister({
-                user: {
-                    name: "",
-                    email: "",
-                    password: "",
-                    password_confirmation: "",
-                },
+                name: "",
+                email: "",
+                password: "",
+                password_confirmation: "",
             });
     } catch (error) {
         console.log(error);

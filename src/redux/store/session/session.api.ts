@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { SESSION_URL, URL_SERVER } from "../../../api/axiosQuery";
-import { sessionType } from "./session.types";
+import { responseType } from "../../../types/response.types";
 
 export const sessionApi = createApi({
     reducerPath: "api/session",
@@ -9,7 +9,7 @@ export const sessionApi = createApi({
     }),
     endpoints: (build) => ({
         createSession: build.mutation<
-            sessionType,
+            responseType,
             {
                 email?: string;
                 password?: string;

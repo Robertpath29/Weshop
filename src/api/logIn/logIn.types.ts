@@ -1,14 +1,14 @@
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
-import { sessionType } from "../../redux/store/session/session.types";
 import { ActionCreatorWithPayload, SerializedError } from "@reduxjs/toolkit";
 import { NavigateFunction } from "react-router-dom";
 import { routersType } from "../../routers/routersType";
+import { responseType } from "../../types/response.types";
 
 export type logInType = {
     (
         result:
             | {
-                  data: sessionType;
+                  data: responseType;
               }
             | {
                   error: FetchBaseQueryError | SerializedError;
