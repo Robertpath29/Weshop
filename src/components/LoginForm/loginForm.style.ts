@@ -7,10 +7,12 @@ export const LoginFormStyle = styled.form`
     width: 400px;
 `;
 
-export const ContainerNewCustomer = styled.div`
+export const ContainerTitle = styled.div`
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
     & > h1 {
+        margin: 0;
         color: white;
         margin-right: 15px;
     }

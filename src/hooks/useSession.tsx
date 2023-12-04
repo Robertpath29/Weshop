@@ -15,7 +15,9 @@ export const useSession = (
         >
     >,
     setPages?: React.Dispatch<React.SetStateAction<routersType>>,
-    routeHome?: NavigateFunction
+    routeHome?: NavigateFunction,
+    countIncorrectPassword?: number,
+    setCountIncorrectPassword?: React.Dispatch<React.SetStateAction<number>>
 ) => {
     const { getCurrent_user } = useAction();
     const [mutate, { isLoading }] = useCreateSessionMutation();
@@ -32,7 +34,9 @@ export const useSession = (
                     dataLogin,
                     routeHome,
                     undefined,
-                    setError
+                    setError,
+                    countIncorrectPassword,
+                    setCountIncorrectPassword
                 );
             } else if (dataCookie) {
                 const result = await mutate(dataCookie);

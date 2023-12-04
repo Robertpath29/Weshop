@@ -27,6 +27,7 @@ export const MessageGroupStyle = styled.div`
     align-items: center;
     justify-content: center;
     font-size: 2.1rem;
+    margin: 0 20px;
     & > p {
         margin: 0;
         margin-right: 20px;

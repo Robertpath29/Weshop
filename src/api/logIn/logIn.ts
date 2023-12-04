@@ -9,7 +9,9 @@ export const logIn: logInType = (
     dataLogin,
     routeHome,
     setPages,
-    setError
+    setError,
+    countIncorrectPassword,
+    setCountIncorrectPassword
 ) => {
     if ("data" in result) {
         if (result.data.status === "success") {
@@ -27,6 +29,9 @@ export const logIn: logInType = (
             }, 100);
         } else {
             if (setError && dataLogin && result.data.message) {
+                if (setCountIncorrectPassword && countIncorrectPassword) {
+                    setCountIncorrectPassword(countIncorrectPassword + 1);
+                }
                 setError({
                     status: result.data.status,
                     message: result.data.message,

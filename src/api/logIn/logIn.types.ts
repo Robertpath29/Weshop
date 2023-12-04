@@ -30,6 +30,8 @@ export type logInType = {
                   }
                 | undefined
             >
-        >
+        >,
+        countIncorrectPassword?: number,
+        setCountIncorrectPassword?: React.Dispatch<React.SetStateAction<number>>
     ): void;
 };
