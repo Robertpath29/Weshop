@@ -5,14 +5,16 @@ export const UserMenuStyle = styled.div<{
     $visibility: boolean;
 }>`
     width: 120px;
-    height: ${(props) => (props.$visibility ? "100px" : "0")};
+    height: ${(props) => (props.$visibility ? "max-content" : "0")};
+    padding-top: ${(props) => (props.$visibility ? "20px" : "0")};
+    padding-bottom: ${(props) => (props.$visibility ? "5px" : "0")};
     position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: end;
     z-index: 11;
     top: 15px;
-    left: -60px;
+    left: -75px;
     background-color: ${() => theme.color.base};
     color: black;
     overflow: hidden;

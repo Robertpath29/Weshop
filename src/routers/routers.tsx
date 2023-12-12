@@ -6,6 +6,7 @@ import LoginPage from "../pages/LoginPage/LoginPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
 import UserSettingsPage from "../pages/UserSettingsPage/UserSettingsPage";
 import PasswordResetPage from "../pages/PasswordResetPage/PasswordResetPage";
+import AdminPanel from "../pages/AdminPanel/AdminPanel";
 
 export const zeroPage: routersType = [{ path: "/", element: <></> }];
 
@@ -20,4 +21,8 @@ export const appPagesUser: routersType = [
     { path: "/", element: <MainPage /> },
     { path: "*", element: <NotFound404Page /> },
     { path: "/user/setting", element: <UserSettingsPage /> },
+];
+
+export const appPagesAdmin: routersType = [
+    { path: "/admin/panel", element: <AdminPanel /> },
 ];

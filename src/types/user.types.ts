@@ -11,4 +11,6 @@ export type userType = {
     password?: string;
     password_confirmation?: string;
     remember_token_digest?: string;
+    role?: string;
+    created_at?: string;
 };

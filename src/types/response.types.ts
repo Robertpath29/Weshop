@@ -6,6 +6,7 @@ export type responseType = {
     remember_token?: string;
     current_user?: userType;
     warning?: warningType;
+    oll_users?: userType[];
 };
 
 type warningType = {
