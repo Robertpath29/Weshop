@@ -22,3 +22,33 @@ export const NavGroup = styled.div`
         margin-right: 6px;
     }
 `;
+
+export const ContainerArrowNavStyle = styled.div<{ $visibility?: boolean }>`
+    display: flex;
+    align-items: center;
+    position: relative;
+    &::before {
+        display: ${(props) => (props.$visibility ? "block" : "none")};
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 20px;
+        top: 15px;
+        left: -206px;
+        background-color: ${() => theme.color.main};
+        cursor: auto;
+    }
+    &::after {
+        opacity: ${(props) => (props.$visibility ? "1" : "0")};
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: ${() => theme.color.base};
+        transform: rotate(45deg);
+        top: 25px;
+        left: -2px;
+        cursor: auto;
+        transition: all 0.3s;
+    }
+`;

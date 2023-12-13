@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavGroup, NavStyle } from "./nav.style";
+import { ContainerArrowNavStyle, NavGroup, NavStyle } from "./nav.style";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import NavMenu from "../NavMenu/NavMenu";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ const Nav = () => {
     const [menuMenVisibility, setMenuMenVisibility] = useState(false);
     const [menuWomenVisibility, setMenuWomenVisibility] = useState(false);
     const routeHome = useNavigate();
+    console.log(menuMenVisibility);
 
     return (
         <NavStyle>
@@ -21,6 +22,9 @@ const Nav = () => {
                     setMenuWomenVisibility(false);
                     setMenuMenVisibility(true);
                 }}
+                onMouseOut={() => {
+                    setMenuMenVisibility(false);
+                }}
             >
                 <span>Men</span>
                 <NavMenu
@@ -28,12 +32,17 @@ const Nav = () => {
                     menuVisibility={menuMenVisibility}
                     setMenVisibility={setMenuMenVisibility}
                 />
-                <MdOutlineKeyboardArrowDown />
+                <ContainerArrowNavStyle $visibility={menuMenVisibility}>
+                    <MdOutlineKeyboardArrowDown />
+                </ContainerArrowNavStyle>
             </NavGroup>
             <NavGroup
                 onMouseOver={() => {
                     setMenuMenVisibility(false);
                     setMenuWomenVisibility(true);
+                }}
+                onMouseOut={() => {
+                    setMenuWomenVisibility(false);
                 }}
             >
                 <span>Women</span>
@@ -41,7 +50,9 @@ const Nav = () => {
                     menuVisibility={menuWomenVisibility}
                     setMenVisibility={setMenuWomenVisibility}
                 />
-                <MdOutlineKeyboardArrowDown />
+                <ContainerArrowNavStyle $visibility={menuWomenVisibility}>
+                    <MdOutlineKeyboardArrowDown />
+                </ContainerArrowNavStyle>
             </NavGroup>
             <NavGroup>
                 <span>Page</span>

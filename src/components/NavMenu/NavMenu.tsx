@@ -1,8 +1,7 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import {
     DiscountGroupStyle,
     HrGroupStyle,
-    NavMenuContainerStyle,
     NavMenuStyle,
     SunglassesGroupStyle,
     TopGroupStyle,
@@ -43,6 +42,16 @@ const NavMenu: FC<navMenuType> = ({
         "Parkas",
         "Leather & Suede",
     ]);
+
+    const userMenuRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        if (userMenuRef.current) {
+            const contentHeight = userMenuRef.current.scrollHeight;
+            userMenuRef.current.style.height = menuVisibility
+                ? `${contentHeight + 80}px`
+                : "0";
+        }
+    }, [menuVisibility]);
     return (
         <NavMenuStyle
             $men={men}
@@ -50,39 +59,38 @@ const NavMenu: FC<navMenuType> = ({
             onMouseOut={() => {
                 setMenVisibility(false);
             }}
+            ref={userMenuRef}
         >
-            <NavMenuContainerStyle $men={men} $menuVisibility={menuVisibility}>
-                <TopGroupStyle>
-                    <h1>TOP</h1>
-                    <HrGroupStyle>
-                        <hr />
-                    </HrGroupStyle>
-                    {top.map((name, kay) => (
-                        <span key={kay}>{name}</span>
-                    ))}
-                </TopGroupStyle>
-                <WinterGroupStyle>
-                    <h1>Winter Style</h1>
-                    <HrGroupStyle>
-                        <hr />
-                    </HrGroupStyle>
-                    {winter.map((name, kay) => (
-                        <span key={kay}>{name}</span>
-                    ))}
-                </WinterGroupStyle>
-                <DiscountGroupStyle $men={men}>
-                    <h2>50% OFF</h2>
-                </DiscountGroupStyle>
-                <SunglassesGroupStyle>
-                    <h1>Sunglasses</h1>
-                    <HrGroupStyle>
-                        <hr />
-                    </HrGroupStyle>
-                    {sunglasses.map((name, kay) => (
-                        <span key={kay}>{name}</span>
-                    ))}
-                </SunglassesGroupStyle>
-            </NavMenuContainerStyle>
+            <TopGroupStyle>
+                <h1>TOP</h1>
+                <HrGroupStyle>
+                    <hr />
+                </HrGroupStyle>
+                {top.map((name, kay) => (
+                    <span key={kay}>{name}</span>
+                ))}
+            </TopGroupStyle>
+            <WinterGroupStyle>
+                <h1>Winter Style</h1>
+                <HrGroupStyle>
+                    <hr />
+                </HrGroupStyle>
+                {winter.map((name, kay) => (
+                    <span key={kay}>{name}</span>
+                ))}
+            </WinterGroupStyle>
+            <DiscountGroupStyle $men={men}>
+                <h2>50% OFF</h2>
+            </DiscountGroupStyle>
+            <SunglassesGroupStyle>
+                <h1>Sunglasses</h1>
+                <HrGroupStyle>
+                    <hr />
+                </HrGroupStyle>
+                {sunglasses.map((name, kay) => (
+                    <span key={kay}>{name}</span>
+                ))}
+            </SunglassesGroupStyle>
         </NavMenuStyle>
     );
 };

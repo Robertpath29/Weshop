@@ -5,44 +5,19 @@ export const NavMenuStyle = styled.article<{
     $men?: boolean;
     $menuVisibility: boolean;
 }>`
-    overflow: ${(props) => (props.$menuVisibility ? "visible" : "hidden")};
-    height: max-content;
-    cursor: auto;
+    max-width: ${() => theme.size.globalWidth + "px"};
+    overflow: hidden;
     position: absolute;
+    display: flex;
+    color: ${() => theme.color.navMenuLink};
+    font-size: 1rem;
     z-index: 1;
     left: 0;
     right: 0;
+    cursor: auto;
     top: 120px;
-    box-shadow: 0px 3px 10px ${() => theme.color.navMenuLink};
-    transition: height 0.3s;
-    &::before {
-        content: "";
-        z-index: -1;
-        position: absolute;
-        width: 50px;
-        height: 50px;
-        background-color: ${() => theme.color.base};
-        top: 0px;
-        left: ${(props) => (props.$men ? "455px" : "545px")};
-        transform: rotate(45deg);
-    }
-`;
-
-export const NavMenuContainerStyle = styled.div<{
-    $men?: boolean;
-    $menuVisibility: boolean;
-}>`
-    max-width: ${() => theme.size.globalWidth + "px"};
-    display: flex;
-    position: relative;
+    box-shadow: 0px 8px 10px ${() => theme.color.navMenuLink};
     justify-content: space-between;
-    color: ${() => theme.color.navMenuLink};
-    height: ${(props) => (props.$menuVisibility ? "max-content" : "0")};
-    padding: ${(props) =>
-        props.$menuVisibility ? "50px 150px 100px 50px" : "0px 150px 0px 50px"};
-    overflow: hidden;
-    background-color: ${() => theme.color.base};
-    font-size: 1rem;
     transition: all 0.3s;
     background-image: ${(props) =>
         props.$men
@@ -53,39 +28,44 @@ export const NavMenuContainerStyle = styled.div<{
     background-size: cover;
     &::before {
         content: "";
-
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
         background-color: ${() => theme.color.base};
+        z-index: -1;
         opacity: 0.6;
-    }
-    h1 {
-        margin: 0;
-        z-index: 1;
-    }
-    span {
-        margin-bottom: 10px;
-        cursor: pointer;
-        z-index: 1;
-
-        &:hover {
-            color: ${() => theme.color.main};
-        }
     }
 `;
 
 export const TopGroupStyle = styled.div`
+    margin: 50px 0 0 50px;
     display: flex;
     flex-direction: column;
+    & > span {
+        margin-bottom: 5px;
+    }
+    & > span:hover {
+        cursor: pointer;
+        color: ${() => theme.color.main};
+    }
 `;
 export const WinterGroupStyle = styled.div`
+    margin: 50px 0 0 0px;
     display: flex;
     flex-direction: column;
+    & > span {
+        margin-bottom: 5px;
+    }
+    & > span:hover {
+        cursor: pointer;
+        color: ${() => theme.color.main};
+    }
 `;
 export const DiscountGroupStyle = styled.div<{ $men?: boolean }>`
+    margin: 90px 0 0 50px;
+    height: 260px;
     width: 260px;
     position: relative;
     cursor: pointer;
@@ -127,8 +107,16 @@ export const DiscountGroupStyle = styled.div<{ $men?: boolean }>`
     }
 `;
 export const SunglassesGroupStyle = styled.div`
+    margin: 50px 50px 0 0;
     display: flex;
     flex-direction: column;
+    & > span {
+        margin-bottom: 5px;
+    }
+    & > span:hover {
+        cursor: pointer;
+        color: ${() => theme.color.main};
+    }
 `;
 
 export const HrGroupStyle = styled.div`
