@@ -1,6 +1,6 @@
 import { saveUserCookie } from "../../utils/saveUserCookie";
 
-import { appPages, appPagesUser } from "../../routers/routers";
+import { appPages, appPagesAdmin, appPagesUser } from "../../routers/routers";
 import { logInType } from "./logIn.types";
 
 export const logIn: logInType = (
@@ -23,7 +23,11 @@ export const logIn: logInType = (
                 );
             }
 
-            if (setPages) setPages(appPagesUser);
+            if (setPages) {
+                result.data.current_user?.role === "admin"
+                    ? setPages([...appPagesUser, ...appPagesAdmin])
+                    : setPages(appPagesUser);
+            }
             setTimeout(() => {
                 getCurrent_user(result.data.current_user);
             }, 100);

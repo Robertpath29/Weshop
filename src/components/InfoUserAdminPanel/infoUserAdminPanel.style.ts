@@ -15,4 +15,10 @@ export const InfoUserAdminPanelStyle = styled.table`
         border: 1px solid black;
         padding: 10px;
     }
+    select {
+        width: 100%;
+        padding: 10px;
+        color: ${() => theme.color.main};
+        text-transform: uppercase;
+    }
 `;
