@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import { ContainerMenuStyle, UserMenuStyle } from "./userMenu.style";
 import { IoLogOutOutline } from "react-icons/io5";
 import { userMenuType } from "./userMenu.types";
@@ -15,8 +15,17 @@ const UserMenu: FC<userMenuType> = ({ visibility }) => {
     const routeSettingUser = useNavigate();
     const routeAdminPanel = useNavigate();
     const routeHome = useNavigate();
+    const userMenuRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        if (userMenuRef.current) {
+            const contentHeight = userMenuRef.current.scrollHeight;
+            userMenuRef.current.style.height = visibility
+                ? `${contentHeight}px`
+                : "0";
+        }
+    }, [visibility]);
     return (
-        <UserMenuStyle $visibility={visibility}>
+        <UserMenuStyle $visibility={visibility} ref={userMenuRef}>
             <ContainerMenuStyle>
                 <IoSettingsOutline />
                 <span

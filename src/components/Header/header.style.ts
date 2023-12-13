@@ -72,3 +72,9 @@ export const ContainerGroupLogin = styled.div`
         cursor: pointer;
     }
 `;
+
+export const ContainerArrowUserMenuStyle = styled.div`
+    display: flex;
+    align-items: center;
+    position: relative;
+`;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
     ContactGroup,
+    ContainerArrowUserMenuStyle,
     ContainerContact,
     ContainerGroupLogin,
     ContainerHeader,
@@ -50,11 +51,15 @@ const Header = () => {
                     <ContainerGroupLogin>
                         <LoginGroup>
                             <span>English</span>
-                            <MdOutlineKeyboardArrowDown />
+                            <ContainerArrowUserMenuStyle>
+                                <MdOutlineKeyboardArrowDown />
+                            </ContainerArrowUserMenuStyle>
                         </LoginGroup>
                         <LoginGroup>
                             <span>USD</span>
-                            <MdOutlineKeyboardArrowDown />
+                            <ContainerArrowUserMenuStyle>
+                                <MdOutlineKeyboardArrowDown />
+                            </ContainerArrowUserMenuStyle>
                         </LoginGroup>
                         {user.name ? (
                             <LoginGroup
@@ -62,8 +67,10 @@ const Header = () => {
                                 onMouseOut={() => isVisibility(false)}
                             >
                                 <span>{user.name}</span>
-                                <MdOutlineKeyboardArrowDown />
-                                <UserMenu visibility={visibility} />
+                                <ContainerArrowUserMenuStyle>
+                                    <MdOutlineKeyboardArrowDown />
+                                    <UserMenu visibility={visibility} />
+                                </ContainerArrowUserMenuStyle>
                             </LoginGroup>
                         ) : (
                             <span
