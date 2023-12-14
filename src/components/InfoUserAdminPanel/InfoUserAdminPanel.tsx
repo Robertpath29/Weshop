@@ -53,19 +53,23 @@ const InfoUserAdminPanel: FC<{ data: responseType | undefined }> = ({
                         <td>{user.email}</td>
                         <td>{user.created_at}</td>
                         <td>
-                            <select
-                                defaultValue={user.role}
-                                onChange={(e) =>
-                                    setSelectValue({
-                                        role: e.target.value,
-                                        id: user.id,
-                                    })
-                                }
-                            >
-                                <option value="basic">Basic</option>
-                                <option value="moderator">Moderator</option>
-                                <option value="admin">Admin</option>
-                            </select>
+                            {current_user.email === user.email ? (
+                                <>{user.role}</>
+                            ) : (
+                                <select
+                                    defaultValue={user.role}
+                                    onChange={(e) =>
+                                        setSelectValue({
+                                            role: e.target.value,
+                                            id: user.id,
+                                        })
+                                    }
+                                >
+                                    <option value="basic">Basic</option>
+                                    <option value="moderator">Moderator</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                            )}
                         </td>
                     </tr>
                 ))}
