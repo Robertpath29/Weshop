@@ -12,9 +12,11 @@ import Loading from "../Loading/Loading";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import BannerImgCard from "./BannerImgCard/BannerImgCard";
 
-const InfoHeroBannerAdminPanel: FC<{ data: responseType | undefined }> = ({
-    data,
-}) => {
+const InfoHeroBannerAdminPanel: FC<{
+    data: responseType | undefined;
+    getHeroBanner: number;
+    setGetHeroBanner: React.Dispatch<React.SetStateAction<number>>;
+}> = ({ data, getHeroBanner, setGetHeroBanner }) => {
     const [disabled, isDisabled] = useState(true);
     const [dataForm, setDataForm] = useState<{
         placeholder: string;
@@ -33,6 +35,7 @@ const InfoHeroBannerAdminPanel: FC<{ data: responseType | undefined }> = ({
             if (response.data.status === "success") {
                 isDisabled(true);
                 setDataForm({ placeholder: "", url: "", img: undefined });
+                setGetHeroBanner(getHeroBanner + 1);
             }
         }
     };
@@ -43,7 +46,12 @@ const InfoHeroBannerAdminPanel: FC<{ data: responseType | undefined }> = ({
                     <h1>No Images!</h1>
                 ) : (
                     data?.images?.map((img) => (
-                        <BannerImgCard img={img} key={img.id} />
+                        <BannerImgCard
+                            img={img}
+                            key={img.id}
+                            getHeroBanner={getHeroBanner}
+                            setGetHeroBanner={setGetHeroBanner}
+                        />
                     ))
                 )}
             </ContainerImageCard>

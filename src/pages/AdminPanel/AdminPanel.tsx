@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { AdminPanelStyle, ContainerAdminPanelStyle } from "./adminPanel.style";
 import Header from "../../components/Header/Header";
 import InfoUserAdminPanel from "../../components/InfoUserAdminPanel/InfoUserAdminPanel";
@@ -14,8 +14,10 @@ const AdminPanel = () => {
     const { data: dataUsers, isLoading: isLoadingUsers } = useGetUsersQuery(
         current_user.email
     );
+    const [getHeroBanner, setGetHeroBanner] = useState(0);
+
     const { data: dataHeroBanner, isLoading: isLoadingHeroBanner } =
-        useGetHeroBannerImgQuery(0);
+        useGetHeroBannerImgQuery(getHeroBanner);
     return (
         <AdminPanelStyle>
             <Header />
@@ -31,7 +33,11 @@ const AdminPanel = () => {
                 {isLoadingHeroBanner ? (
                     <Loading />
                 ) : (
-                    <InfoHeroBannerAdminPanel data={dataHeroBanner} />
+                    <InfoHeroBannerAdminPanel
+                        data={dataHeroBanner}
+                        getHeroBanner={getHeroBanner}
+                        setGetHeroBanner={setGetHeroBanner}
+                    />
                 )}
             </ContainerAdminPanelStyle>
         </AdminPanelStyle>

@@ -7,12 +7,21 @@ import {
     axiosDelete,
 } from "../../../api/axiosQuery";
 
-const BannerImgCard: FC<{ img: image }> = ({ img }) => {
+const BannerImgCard: FC<{
+    img: image;
+    getHeroBanner: number;
+    setGetHeroBanner: React.Dispatch<React.SetStateAction<number>>;
+}> = ({ img, getHeroBanner, setGetHeroBanner }) => {
     const [visBtn, isVisBtn] = useState(false);
-    const deleteImg = () => {
+    const deleteImg = async () => {
         const confirm = window.confirm("Are you sure?");
         if (confirm) {
-            axiosDelete(HERO_BANNER_IMG_URL + `/${img.id}`);
+            const response = await axiosDelete(
+                HERO_BANNER_IMG_URL + `/${img.id}`
+            );
+            if (response.data.status === "success") {
+                setGetHeroBanner(getHeroBanner + 1);
+            }
         }
     };
     return (
