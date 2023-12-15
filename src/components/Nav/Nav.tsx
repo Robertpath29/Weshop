@@ -8,7 +8,6 @@ const Nav = () => {
     const [menuMenVisibility, setMenuMenVisibility] = useState(false);
     const [menuWomenVisibility, setMenuWomenVisibility] = useState(false);
     const routeHome = useNavigate();
-    console.log(menuMenVisibility);
 
     return (
         <NavStyle>

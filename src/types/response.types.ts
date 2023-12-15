@@ -7,6 +7,7 @@ export type responseType = {
     current_user?: userType;
     warning?: warningType;
     oll_users?: userType[];
+    images?: image[];
 };
 
 type warningType = {
@@ -15,4 +16,12 @@ type warningType = {
     old_password?: string;
     password?: string;
     password_confirmation?: string;
+};
+
+export type image = {
+    id: number;
+    path: string;
+    title: string;
+    url: string;
+    placeholder: string;
 };

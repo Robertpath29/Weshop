@@ -8,4 +8,7 @@ export const ContainerAdminPanelStyle = styled.div`
     & > h1 {
         color: ${() => theme.color.main};
     }
+    & > hr {
+        margin: 30px 0;
+    }
 `;

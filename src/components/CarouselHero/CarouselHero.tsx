@@ -19,7 +19,7 @@ const CarouselHero = () => {
 
     return (
         <CarouselHeroStyle>
-            {data?.images.length !== 0 ? (
+            {data?.images?.length !== 0 ? (
                 <Swiper
                     modules={[Autoplay]}
                     spaceBetween={50}
@@ -29,7 +29,7 @@ const CarouselHero = () => {
                     autoplay={{ delay: 3000, disableOnInteraction: false }}
                     simulateTouch={false}
                 >
-                    {data?.images.map((img) => (
+                    {data?.images?.map((img) => (
                         <SwiperSlide key={img.id}>
                             <img
                                 className="imagesSlide"
@@ -38,7 +38,7 @@ const CarouselHero = () => {
                             />
                         </SwiperSlide>
                     ))}
-                    {data && data?.images.length > 1 ? (
+                    {data?.images && data?.images.length > 1 ? (
                         <>
                             <SlideNextButton />
                             <SlidePrevButton />

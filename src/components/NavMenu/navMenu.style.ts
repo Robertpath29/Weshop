@@ -6,6 +6,7 @@ export const NavMenuStyle = styled.article<{
     $menuVisibility: boolean;
 }>`
     max-width: ${() => theme.size.globalWidth + "px"};
+    height: 0;
     overflow: hidden;
     position: absolute;
     display: flex;
