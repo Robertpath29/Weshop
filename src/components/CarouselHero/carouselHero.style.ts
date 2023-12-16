@@ -9,6 +9,7 @@ export const CarouselHeroStyle = styled.section`
     user-select: none;
     .imagesSlide {
         width: ${() => theme.size.globalWidth + "px"};
+        height: 800px;
     }
 
     .SlideNextButton,

@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
     appPages,
     appPagesAdmin,
+    appPagesModerator,
     appPagesUser,
     zeroPage,
 } from "../routers/routers";
@@ -23,9 +24,17 @@ function App() {
             if (!current_user.name) {
                 setPages(appPages);
             } else {
-                current_user.role == "admin"
-                    ? setPages([...appPagesAdmin, ...appPagesUser])
-                    : setPages(appPagesUser);
+                if (current_user.role === "admin") {
+                    setPages([
+                        ...appPagesAdmin,
+                        ...appPagesModerator,
+                        ...appPagesUser,
+                    ]);
+                } else if (current_user.role === "moderator") {
+                    setPages([...appPagesModerator, ...appPagesUser]);
+                } else {
+                    setPages(appPagesUser);
+                }
             }
         }
     }, [current_user]);

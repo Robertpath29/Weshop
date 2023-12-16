@@ -7,6 +7,7 @@ import RegisterPage from "../pages/RegisterPage/RegisterPage";
 import UserSettingsPage from "../pages/UserSettingsPage/UserSettingsPage";
 import PasswordResetPage from "../pages/PasswordResetPage/PasswordResetPage";
 import AdminPanel from "../pages/AdminPanel/AdminPanel";
+import ModeratorPanel from "../pages/ModeratorPanel/ModeratorPanel";
 
 export const zeroPage: routersType = [{ path: "/", element: <></> }];
 
@@ -25,4 +26,7 @@ export const appPagesUser: routersType = [
 
 export const appPagesAdmin: routersType = [
     { path: "/admin/panel", element: <AdminPanel /> },
+];
+export const appPagesModerator: routersType = [
+    { path: "/moderator/panel", element: <ModeratorPanel /> },
 ];

@@ -39,6 +39,7 @@ const AdminPanel = () => {
                         setGetHeroBanner={setGetHeroBanner}
                     />
                 )}
+                <hr />
             </ContainerAdminPanelStyle>
         </AdminPanelStyle>
     );

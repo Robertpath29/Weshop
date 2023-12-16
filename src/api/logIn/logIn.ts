@@ -1,6 +1,11 @@
 import { saveUserCookie } from "../../utils/saveUserCookie";
 
-import { appPages, appPagesAdmin, appPagesUser } from "../../routers/routers";
+import {
+    appPages,
+    appPagesAdmin,
+    appPagesModerator,
+    appPagesUser,
+} from "../../routers/routers";
 import { logInType } from "./logIn.types";
 
 export const logIn: logInType = (
@@ -24,9 +29,17 @@ export const logIn: logInType = (
             }
 
             if (setPages) {
-                result.data.current_user?.role === "admin"
-                    ? setPages([...appPagesUser, ...appPagesAdmin])
-                    : setPages(appPagesUser);
+                if (result.data.current_user?.role === "admin") {
+                    setPages([
+                        ...appPagesUser,
+                        ...appPagesModerator,
+                        ...appPagesAdmin,
+                    ]);
+                } else if (result.data.current_user?.role === "moderator") {
+                    setPages([...appPagesUser, ...appPagesModerator]);
+                } else {
+                    setPages(appPagesUser);
+                }
             }
             setTimeout(() => {
                 getCurrent_user(result.data.current_user);

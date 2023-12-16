@@ -7,6 +7,7 @@ import { useAction } from "../../hooks/useAction";
 import { useSelector } from "react-redux";
 import { reducersType } from "../../redux/combineReducer/combineReducer";
 import { IoSettingsOutline } from "react-icons/io5";
+import { AiFillControl } from "react-icons/ai";
 import { RiAdminFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 const UserMenu: FC<userMenuType> = ({ visibility }) => {
@@ -48,6 +49,19 @@ const UserMenu: FC<userMenuType> = ({ visibility }) => {
                     </span>
                 </ContainerMenuStyle>
             )}
+            {current_user.role === "admin" ||
+            current_user.role === "moderator" ? (
+                <ContainerMenuStyle>
+                    <AiFillControl />
+                    <span
+                        onClick={() => {
+                            routeAdminPanel("/moderator/panel");
+                        }}
+                    >
+                        Moderator panel
+                    </span>
+                </ContainerMenuStyle>
+            ) : undefined}
 
             <ContainerMenuStyle>
                 <IoLogOutOutline />
