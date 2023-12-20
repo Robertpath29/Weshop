@@ -11,6 +11,9 @@ const WSInput: FC<WSInputType> = ({
     value,
     warning,
     disabled,
+    multiple,
+    name,
+    checked,
 }) => {
     return (
         <WSInputStyle
@@ -22,6 +25,9 @@ const WSInput: FC<WSInputType> = ({
             value={value}
             $errorBorder={warning}
             disabled={disabled}
+            multiple={multiple}
+            name={name}
+            checked={checked}
         ></WSInputStyle>
     );
 };

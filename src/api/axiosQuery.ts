@@ -6,6 +6,7 @@ export const USER_URL = `${URL_SERVER}/users`;
 export const SESSION_URL = `${URL_SERVER}/sessions`;
 export const PASSWORD_RESET_URL = `${URL_SERVER}/password_reset`;
 export const ADMIN_USERS_URL = `${URL_SERVER}/admin/users`;
+export const PRODUCTS_URL = `${URL_SERVER}/products`;
 
 export async function axiosGet(
     url: string,

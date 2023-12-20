@@ -25,7 +25,7 @@ export const ContainerInputStyle = styled.div<{ $disabled?: boolean }>`
     & > label {
         font-size: 1.2rem;
         margin-right: 20px;
-        color: ${(props) => (props.$disabled ? "gray" : "black")};
+        color: ${(props) => (props.$disabled ? "gray" : theme.color.main)};
     }
     & > input {
         border: 1px solid

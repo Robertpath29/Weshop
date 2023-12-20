@@ -7,4 +7,7 @@ export type WSInputType = {
     warning?: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     disabled?: boolean;
+    multiple?: boolean;
+    name?: string;
+    checked?: boolean;
 };

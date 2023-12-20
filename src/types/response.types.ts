@@ -8,6 +8,7 @@ export type responseType = {
     warning?: warningType;
     oll_users?: userType[];
     images?: image[];
+    products?: product[];
 };
 
 type warningType = {
@@ -16,6 +17,25 @@ type warningType = {
     old_password?: string;
     password?: string;
     password_confirmation?: string;
+    title?: string;
+    category?: string;
+    type_of_clothing?: string;
+    price?: string;
+    old_price?: string;
+};
+
+type product = {
+    id: number;
+    title: string;
+    description: string;
+    category: string;
+    type_of_clothing: string;
+    color: string;
+    sizes: string[];
+    price: string;
+    old_price: string;
+    created_at: string;
+    updated_at: string;
 };
 
 export type image = {
