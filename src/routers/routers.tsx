@@ -8,6 +8,7 @@ import UserSettingsPage from "../pages/UserSettingsPage/UserSettingsPage";
 import PasswordResetPage from "../pages/PasswordResetPage/PasswordResetPage";
 import AdminPanel from "../pages/AdminPanel/AdminPanel";
 import ModeratorPanel from "../pages/ModeratorPanel/ModeratorPanel";
+import ShopPage from "../pages/ShopPage/ShopPage";
 
 export const zeroPage: routersType = [{ path: "/", element: <></> }];
 
@@ -17,11 +18,13 @@ export const appPages: routersType = [
     { path: "/login", element: <LoginPage /> },
     { path: "/login/register", element: <RegisterPage /> },
     { path: "/password_reset/edit", element: <PasswordResetPage /> },
+    { path: "/shop", element: <ShopPage /> },
 ];
 export const appPagesUser: routersType = [
     { path: "/", element: <MainPage /> },
     { path: "*", element: <NotFound404Page /> },
     { path: "/user/setting", element: <UserSettingsPage /> },
+    { path: "/shop", element: <ShopPage /> },
 ];
 
 export const appPagesAdmin: routersType = [

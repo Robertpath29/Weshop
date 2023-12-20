@@ -7,6 +7,7 @@ export const ModeratorPanelStyle = styled.section`
     background-repeat: no-repeat;
     background-position: 0 0;
     background-size: cover;
+    overflow: hidden;
     &::before {
         content: "";
         position: absolute;
@@ -26,4 +27,5 @@ export const ContainerModeratorPanelStyle = styled.div`
     max-width: ${() => theme.size.globalWidth + "px"};
     margin: 0 auto;
     height: calc(100vh - 125px);
+    overflow: auto;
 `;

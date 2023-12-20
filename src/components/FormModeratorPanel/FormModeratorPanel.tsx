@@ -86,7 +86,7 @@ const FormModeratorPanel = () => {
                             placeholder="description"
                             id="description"
                             rows={10}
-                            cols={20}
+                            cols={10}
                             value={dataForm.description}
                             onChange={(e) => {
                                 setResponse({ status: "" });

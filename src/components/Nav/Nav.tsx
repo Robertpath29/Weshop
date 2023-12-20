@@ -8,13 +8,13 @@ const Nav = () => {
     const [menuMenVisibility, setMenuMenVisibility] = useState(false);
     const [menuWomenVisibility, setMenuWomenVisibility] = useState(false);
     const routeHome = useNavigate();
+    const routeShop = useNavigate();
 
     return (
         <NavStyle>
             <span onClick={() => routeHome("/")}>Home</span>
             <NavGroup>
-                <span>Shop</span>
-                <MdOutlineKeyboardArrowDown />
+                <span onClick={() => routeShop("/shop")}>Shop</span>
             </NavGroup>
             <NavGroup
                 onMouseOver={() => {
