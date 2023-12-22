@@ -20,12 +20,14 @@ export const FilterCheckBoxStyle = styled.div`
         label {
             color: ${() => theme.color.navMenuLink};
             font-size: 0.9rem;
+            cursor: pointer;
         }
 
         input[type="checkbox"] {
             appearance: none;
             position: relative;
             margin-right: 20px;
+            cursor: pointer;
             width: 13px;
             height: 13px;
             border: 1px solid ${() => theme.color.navMenuLink};
