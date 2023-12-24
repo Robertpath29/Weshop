@@ -8,7 +8,8 @@ export type responseType = {
     warning?: warningType;
     oll_users?: userType[];
     images?: image[];
-    products?: product[];
+    products?: products[];
+    total_pages?: number;
 };
 
 type warningType = {
@@ -24,7 +25,12 @@ type warningType = {
     old_price?: string;
 };
 
-type product = {
+export type products = {
+    product: product;
+    path_img: path_img[];
+};
+
+export type product = {
     id: number;
     title: string;
     description: string;
@@ -36,6 +42,11 @@ type product = {
     old_price: string;
     created_at: string;
     updated_at: string;
+};
+
+export type path_img = {
+    id: number;
+    url: string;
 };
 
 export type image = {

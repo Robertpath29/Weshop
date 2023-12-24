@@ -98,7 +98,7 @@ const FormModeratorPanel = () => {
                         />
                     </ContainerInput>
                     <ContainerInput>
-                        <label htmlFor="price">price</label>
+                        <label htmlFor="price">price($)</label>
                         <WSInput
                             type="number"
                             id="price"
@@ -115,7 +115,7 @@ const FormModeratorPanel = () => {
                         />
                     </ContainerInput>
                     <ContainerInput>
-                        <label htmlFor="oldPrice">old price</label>
+                        <label htmlFor="oldPrice">old price($)</label>
                         <WSInput
                             type="number"
                             id="oldPrice"

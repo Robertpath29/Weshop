@@ -1,7 +1,9 @@
-import React from "react";
+import React, { FC } from "react";
 import { ColorStyle, FilterColorStyle } from "./filterColor.style";
 
-const FilterColor = () => {
+const FilterColor: FC<{
+    setColor: React.Dispatch<React.SetStateAction<string>>;
+}> = ({ setColor }) => {
     const arrayColor = [
         "red",
         "green",
@@ -16,7 +18,13 @@ const FilterColor = () => {
     return (
         <FilterColorStyle>
             {arrayColor.map((color) => (
-                <ColorStyle $color={color} />
+                <ColorStyle
+                    key={color}
+                    $color={color}
+                    onClick={() => {
+                        setColor(color);
+                    }}
+                />
             ))}
         </FilterColorStyle>
     );
