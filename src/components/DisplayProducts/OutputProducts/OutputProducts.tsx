@@ -11,6 +11,7 @@ const OutputProducts = () => {
     const [perPage, setPerPage] = useState<number>(12);
     const [sortBy, setSortBy] = useState<string>("data");
     const [color, setColor] = useState("");
+    const [productDisplay, setProductDisplay] = useState<string>("block");
 
     const changePage = (e: { selected: number }) => {
         const selectedPage = e.selected + 1;
@@ -24,12 +25,14 @@ const OutputProducts = () => {
     return (
         <OutputProductsStyle>
             <FilterOutput
+                setProductDisplay={setProductDisplay}
                 setPerPage={setPerPage}
                 setSortBy={setSortBy}
                 setColor={setColor}
             />
             <hr />
             <Products
+                productDisplay={productDisplay}
                 perPage={perPage}
                 currentPage={currentPage}
                 setPageCount={setPageCount}

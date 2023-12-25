@@ -11,7 +11,15 @@ const Products: FC<{
     setPageCount: React.Dispatch<React.SetStateAction<number>>;
     sortBy: string;
     color: string;
-}> = ({ perPage, currentPage, setPageCount, sortBy, color }) => {
+    productDisplay: string;
+}> = ({
+    perPage,
+    currentPage,
+    setPageCount,
+    sortBy,
+    color,
+    productDisplay,
+}) => {
     const [arrayProducts, setArrayProducts] = useState<products[]>();
     const [notFound, isNotFound] = useState(false);
     const { data, isLoading } = useGetProductsQuery({
@@ -34,7 +42,7 @@ const Products: FC<{
         }
     }, [data, currentPage]);
     return (
-        <ProductsStyle>
+        <ProductsStyle $prodDisplay={productDisplay}>
             {isLoading ? (
                 <Loading />
             ) : (
@@ -43,7 +51,11 @@ const Products: FC<{
                         <NotFoundStyle>Product not found!</NotFoundStyle>
                     ) : (
                         arrayProducts?.map((product, key) => (
-                            <ProductCard product={product} key={key} />
+                            <ProductCard
+                                product={product}
+                                key={key}
+                                productDisplay={productDisplay}
+                            />
                         ))
                     )}
                 </>
