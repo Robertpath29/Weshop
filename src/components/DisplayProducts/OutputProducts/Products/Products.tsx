@@ -4,6 +4,8 @@ import { products } from "../../../../types/response.types";
 import { useGetProductsQuery } from "../../../../redux/store/products/products.api";
 import Loading from "../../../Loading/Loading";
 import ProductCard from "../../ProductCard/ProductCard";
+import { useAction } from "../../../../hooks/useAction";
+import { getCountProductCategory } from "../../../../utils/getCountProductCategory";
 
 const Products: FC<{
     perPage: number;
@@ -22,6 +24,7 @@ const Products: FC<{
 }) => {
     const [arrayProducts, setArrayProducts] = useState<products[]>();
     const [notFound, isNotFound] = useState(false);
+    const { getNumberProductCategory } = useAction();
     const { data, isLoading } = useGetProductsQuery({
         current_page: currentPage,
         per_page: perPage,
@@ -30,6 +33,7 @@ const Products: FC<{
     });
 
     useEffect(() => {
+        getNumberProductCategory(getCountProductCategory(data?.category));
         setArrayProducts(data?.products);
         if (data?.total_pages) {
             setPageCount(data?.total_pages);
