@@ -1,9 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { ColorStyle, FilterColorStyle } from "./filterColor.style";
 
 const FilterColor: FC<{
     setColor: React.Dispatch<React.SetStateAction<string>>;
 }> = ({ setColor }) => {
+    const [active, isActive] = useState<string>("");
     const arrayColor = [
         "red",
         "green",
@@ -21,8 +22,15 @@ const FilterColor: FC<{
                 <ColorStyle
                     key={color}
                     $color={color}
+                    $active={active === color}
                     onClick={() => {
-                        setColor(color);
+                        if (active === color) {
+                            isActive("");
+                            setColor("");
+                        } else {
+                            setColor(color);
+                            isActive(color);
+                        }
                     }}
                 />
             ))}
