@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { ContainerPaginate, OutputProductsStyle } from "./outputProducts.style";
 import FilterOutput from "./FilterOutput/FilterOutput";
 
 import Products from "./Products/Products";
 import ReactPaginate from "react-paginate";
 
-const OutputProducts = () => {
+const OutputProducts: FC<{ categoryProduct: string }> = ({
+    categoryProduct,
+}) => {
     const [pageCount, setPageCount] = useState<number>(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [perPage, setPerPage] = useState<number>(12);
@@ -38,6 +40,7 @@ const OutputProducts = () => {
                 setPageCount={setPageCount}
                 sortBy={sortBy}
                 color={color}
+                categoryProduct={categoryProduct}
             />
             {pageCount !== 0 && (
                 <ContainerPaginate>

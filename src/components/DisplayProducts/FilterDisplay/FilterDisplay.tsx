@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import {
     ContainerBestSaleStyle,
     ContainerFilterPriceStyle,
@@ -11,7 +11,9 @@ import WSButton from "../../UI/WSButton/WSButton";
 import FilterCheckBox from "./FilterCheckBox/FilterCheckBox";
 import FilterCategory from "./FilterCategory/FilterCategory";
 
-const FilterDisplay = () => {
+const FilterDisplay: FC<{
+    setCategoryProduct: React.Dispatch<React.SetStateAction<string>>;
+}> = ({ setCategoryProduct }) => {
     const [valueRange, setValueRange] = useState<number[]>([20, 50000]);
     const [dataSizes, setDataSizes] = useState<string[]>([]);
 
@@ -19,7 +21,7 @@ const FilterDisplay = () => {
         <FilterDisplayStyle>
             <h1>Category</h1>
             <hr />
-            <FilterCategory />
+            <FilterCategory setCategoryProduct={setCategoryProduct} />
             <h1>price by filter</h1>
             <hr />
             <ContainerRangeStyle>

@@ -14,6 +14,7 @@ const Products: FC<{
     sortBy: string;
     color: string;
     productDisplay: string;
+    categoryProduct: string;
 }> = ({
     perPage,
     currentPage,
@@ -21,6 +22,7 @@ const Products: FC<{
     sortBy,
     color,
     productDisplay,
+    categoryProduct,
 }) => {
     const [arrayProducts, setArrayProducts] = useState<products[]>();
     const [notFound, isNotFound] = useState(false);
@@ -30,6 +32,7 @@ const Products: FC<{
         per_page: perPage,
         sort_by: sortBy,
         color: color,
+        category: categoryProduct,
     });
 
     useEffect(() => {

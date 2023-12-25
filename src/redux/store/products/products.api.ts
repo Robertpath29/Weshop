@@ -15,11 +15,12 @@ export const productsApi = createApi({
                 per_page: number;
                 sort_by: string;
                 color: string;
+                category: string;
             }
         >({
-            query: ({ per_page, current_page, sort_by, color }) =>
+            query: ({ per_page, current_page, sort_by, color, category }) =>
                 PRODUCTS_URL +
-                `?page=${current_page}&per_page=${per_page}&sort_by=${sort_by}&color=${color} `,
+                `?page=${current_page}&per_page=${per_page}&sort_by=${sort_by}&color=${color}&category=${category} `,
         }),
     }),
 });
