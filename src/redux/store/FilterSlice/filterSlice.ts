@@ -9,6 +9,7 @@ const initialState = {
         accessories: 0,
         watch: 0,
     },
+    max_price: 0,
 };
 
 export const filterProductSlice = createSlice({
@@ -17,6 +18,9 @@ export const filterProductSlice = createSlice({
     reducers: {
         getNumberProductCategory: (state, { payload }) => {
             state.categoryCountProduct = payload;
+        },
+        getMaxPrice: (state, { payload }) => {
+            state.max_price = payload;
         },
     },
 });

@@ -1,11 +1,15 @@
 import React, { FC, useState } from "react";
 import { SliderRangeStyle } from "./sliderRange.style";
 import "rc-slider/assets/index.css";
+import { useSelector } from "react-redux";
+import { reducersType } from "../../../redux/combineReducer/combineReducer";
 const SliderRange: FC<{
-    maxValue: number;
     valueRange: number[];
     setValueRange: React.Dispatch<React.SetStateAction<number[]>>;
-}> = ({ maxValue, setValueRange, valueRange }) => {
+}> = ({ setValueRange, valueRange }) => {
+    const { max_price } = useSelector(
+        (state: reducersType) => state.filterProduct
+    );
     const changeSliderValue = (newValue: number | number[]) => {
         if (typeof newValue === "number") {
             setValueRange([newValue, valueRange[1]]);
@@ -17,7 +21,7 @@ const SliderRange: FC<{
     return (
         <SliderRangeStyle
             min={0}
-            max={maxValue}
+            max={max_price}
             range
             allowCross={false}
             value={valueRange}

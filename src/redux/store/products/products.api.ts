@@ -16,11 +16,21 @@ export const productsApi = createApi({
                 sort_by: string;
                 color: string;
                 category: string;
+                min_price: number;
+                max_price: number;
             }
         >({
-            query: ({ per_page, current_page, sort_by, color, category }) =>
+            query: ({
+                per_page,
+                current_page,
+                sort_by,
+                color,
+                category,
+                max_price,
+                min_price,
+            }) =>
                 PRODUCTS_URL +
-                `?page=${current_page}&per_page=${per_page}&sort_by=${sort_by}&color=${color}&category=${category} `,
+                `?page=${current_page}&per_page=${per_page}&sort_by=${sort_by}&color=${color}&category=${category}&min_price=${min_price}&max_price=${max_price} `,
         }),
     }),
 });
