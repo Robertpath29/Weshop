@@ -5,10 +5,11 @@ import FilterOutput from "./FilterOutput/FilterOutput";
 import Products from "./Products/Products";
 import ReactPaginate from "react-paginate";
 
-const OutputProducts: FC<{ categoryProduct: string; valueRange: number[] }> = ({
-    categoryProduct,
-    valueRange,
-}) => {
+const OutputProducts: FC<{
+    categoryProduct: string;
+    valueRange: number[];
+    dataSizes: string;
+}> = ({ categoryProduct, valueRange, dataSizes }) => {
     const [pageCount, setPageCount] = useState<number>(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [perPage, setPerPage] = useState<number>(12);
@@ -35,6 +36,7 @@ const OutputProducts: FC<{ categoryProduct: string; valueRange: number[] }> = ({
             />
             <hr />
             <Products
+                dataSizes={dataSizes}
                 valueRange={valueRange}
                 productDisplay={productDisplay}
                 perPage={perPage}

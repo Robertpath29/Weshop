@@ -6,6 +6,7 @@ import Loading from "../../../Loading/Loading";
 import ProductCard from "../../ProductCard/ProductCard";
 import { useAction } from "../../../../hooks/useAction";
 import { getCountProductCategory } from "../../../../utils/getCountProductCategory";
+import { getCountSizesProduct } from "../../../../utils/getCountSizesProduct";
 
 const Products: FC<{
     perPage: number;
@@ -16,6 +17,7 @@ const Products: FC<{
     productDisplay: string;
     categoryProduct: string;
     valueRange: number[];
+    dataSizes: string;
 }> = ({
     perPage,
     currentPage,
@@ -25,10 +27,12 @@ const Products: FC<{
     productDisplay,
     categoryProduct,
     valueRange,
+    dataSizes,
 }) => {
     const [arrayProducts, setArrayProducts] = useState<products[]>();
     const [notFound, isNotFound] = useState(false);
-    const { getNumberProductCategory, getMaxPrice } = useAction();
+    const { getNumberProductCategory, getMaxPrice, getCountSizes } =
+        useAction();
     const { data, isLoading } = useGetProductsQuery({
         current_page: currentPage,
         per_page: perPage,
@@ -37,10 +41,12 @@ const Products: FC<{
         category: categoryProduct,
         min_price: valueRange[0],
         max_price: valueRange[1],
+        dataSizes: dataSizes,
     });
 
     useEffect(() => {
         getNumberProductCategory(getCountProductCategory(data?.category));
+        getCountSizes(getCountSizesProduct(data?.oll_sizes));
         if (data?.max_price) {
             getMaxPrice(parseFloat(data.max_price));
         }

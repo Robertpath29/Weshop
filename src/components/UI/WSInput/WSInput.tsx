@@ -8,6 +8,7 @@ const WSInput: FC<WSInputType> = ({
     id,
     autocomplete,
     onChange,
+    onClick,
     value,
     warning,
     disabled,
@@ -22,6 +23,7 @@ const WSInput: FC<WSInputType> = ({
             id={id}
             autoComplete={autocomplete}
             onChange={onChange}
+            onClick={onClick}
             value={value}
             $errorBorder={warning}
             disabled={disabled}

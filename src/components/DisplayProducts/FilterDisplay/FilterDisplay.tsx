@@ -8,7 +8,7 @@ import {
 } from "./filterDisplay.style";
 import SliderRange from "../../UI/SliderRange/SliderRange";
 import WSButton from "../../UI/WSButton/WSButton";
-import FilterCheckBox from "./FilterCheckBox/FilterCheckBox";
+import FilterCheckBox from "./FilterRadio/FilterRadio";
 import FilterCategory from "./FilterCategory/FilterCategory";
 import { useSelector } from "react-redux";
 import { reducersType } from "../../../redux/combineReducer/combineReducer";
@@ -16,11 +16,12 @@ import { reducersType } from "../../../redux/combineReducer/combineReducer";
 const FilterDisplay: FC<{
     setCategoryProduct: React.Dispatch<React.SetStateAction<string>>;
     setValueRange: React.Dispatch<React.SetStateAction<number[]>>;
-}> = ({ setCategoryProduct, setValueRange }) => {
+    setDataSizes: React.Dispatch<React.SetStateAction<string>>;
+    dataSizes: string;
+}> = ({ setCategoryProduct, setValueRange, dataSizes, setDataSizes }) => {
     const { max_price } = useSelector(
         (state: reducersType) => state.filterProduct
     );
-    const [dataSizes, setDataSizes] = useState<string[]>([]);
     const [range, setRange] = useState<number[]>([0, 0]);
 
     useEffect(() => {

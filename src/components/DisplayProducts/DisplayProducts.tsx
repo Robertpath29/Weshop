@@ -8,14 +8,18 @@ import { reducersType } from "../../redux/combineReducer/combineReducer";
 const DisplayProducts = () => {
     const [categoryProduct, setCategoryProduct] = useState<string>("");
     const [valueRange, setValueRange] = useState<number[]>([0, 0]);
+    const [dataSizes, setDataSizes] = useState<string>("");
 
     return (
         <DisplayProductsStyle>
             <FilterDisplay
+                dataSizes={dataSizes}
+                setDataSizes={setDataSizes}
                 setCategoryProduct={setCategoryProduct}
                 setValueRange={setValueRange}
             />
             <OutputProducts
+                dataSizes={dataSizes}
                 categoryProduct={categoryProduct}
                 valueRange={valueRange}
             />

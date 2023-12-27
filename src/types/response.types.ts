@@ -12,6 +12,7 @@ export type responseType = {
     total_pages?: number;
     category?: string[];
     max_price?: string;
+    oll_sizes?: string[];
 };
 
 type warningType = {

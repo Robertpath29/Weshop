@@ -23,7 +23,7 @@ export const FilterCheckBoxStyle = styled.div`
             cursor: pointer;
         }
 
-        input[type="checkbox"] {
+        input[type="radio"] {
             appearance: none;
             position: relative;
             margin-right: 20px;
