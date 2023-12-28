@@ -18,6 +18,7 @@ const Products: FC<{
     categoryProduct: string;
     valueRange: number[];
     dataSizes: string;
+    keyword: string;
 }> = ({
     perPage,
     currentPage,
@@ -28,6 +29,7 @@ const Products: FC<{
     categoryProduct,
     valueRange,
     dataSizes,
+    keyword,
 }) => {
     const [arrayProducts, setArrayProducts] = useState<products[]>();
     const [notFound, isNotFound] = useState(false);
@@ -46,6 +48,7 @@ const Products: FC<{
         min_price: valueRange[0],
         max_price: valueRange[1],
         dataSizes: dataSizes,
+        keyword: keyword,
     });
 
     useEffect(() => {

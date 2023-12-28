@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import {
     ContainerBestSaleStyle,
+    ContainerBtnKeyword,
     ContainerFilterPriceStyle,
     ContainerKeywordStyle,
     ContainerRangeStyle,
@@ -19,8 +20,25 @@ const FilterDisplay: FC<{
     setCategoryProduct: React.Dispatch<React.SetStateAction<string>>;
     setValueRange: React.Dispatch<React.SetStateAction<number[]>>;
     setDataSizes: React.Dispatch<React.SetStateAction<string>>;
+    setKeyword: React.Dispatch<React.SetStateAction<string>>;
     dataSizes: string;
-}> = ({ setCategoryProduct, setValueRange, dataSizes, setDataSizes }) => {
+    keyword: string;
+}> = ({
+    setCategoryProduct,
+    setValueRange,
+    dataSizes,
+    setDataSizes,
+    setKeyword,
+    keyword,
+}) => {
+    const [activeKeyword, setActiveKeyword] = useState({
+        tShirt: false,
+        black: false,
+        white: false,
+        fashion: false,
+        woman: false,
+        man: false,
+    });
     const { max_price, best_sale } = useSelector(
         (state: reducersType) => state.filterProduct
     );
@@ -73,12 +91,180 @@ const FilterDisplay: FC<{
             <h1>keyword</h1>
             <hr />
             <ContainerKeywordStyle>
-                <WSButton onClick={() => {}}>T-shirt</WSButton>
-                <WSButton onClick={() => {}}>Black</WSButton>
-                <WSButton onClick={() => {}}>White</WSButton>
-                <WSButton onClick={() => {}}>Fashion</WSButton>
-                <WSButton onClick={() => {}}>Woman</WSButton>
-                <WSButton onClick={() => {}}>Man</WSButton>
+                <ContainerBtnKeyword $active={activeKeyword.tShirt}>
+                    <WSButton
+                        onClick={() => {
+                            if (keyword === "T-shirt") {
+                                setKeyword("");
+                                setActiveKeyword({
+                                    tShirt: false,
+                                    black: false,
+                                    white: false,
+                                    fashion: false,
+                                    woman: false,
+                                    man: false,
+                                });
+                            } else {
+                                setKeyword("T-shirt");
+                                setActiveKeyword({
+                                    tShirt: true,
+                                    black: false,
+                                    white: false,
+                                    fashion: false,
+                                    woman: false,
+                                    man: false,
+                                });
+                            }
+                        }}
+                    >
+                        T-shirt
+                    </WSButton>
+                </ContainerBtnKeyword>
+                <ContainerBtnKeyword $active={activeKeyword.black}>
+                    <WSButton
+                        onClick={() => {
+                            if (keyword === "Black") {
+                                setKeyword("");
+                                setActiveKeyword({
+                                    tShirt: false,
+                                    black: false,
+                                    white: false,
+                                    fashion: false,
+                                    woman: false,
+                                    man: false,
+                                });
+                            } else {
+                                setKeyword("Black");
+                                setActiveKeyword({
+                                    tShirt: false,
+                                    black: true,
+                                    white: false,
+                                    fashion: false,
+                                    woman: false,
+                                    man: false,
+                                });
+                            }
+                        }}
+                    >
+                        Black
+                    </WSButton>
+                </ContainerBtnKeyword>
+                <ContainerBtnKeyword $active={activeKeyword.white}>
+                    <WSButton
+                        onClick={() => {
+                            if (keyword === "White") {
+                                setKeyword("");
+                                setActiveKeyword({
+                                    tShirt: false,
+                                    black: false,
+                                    white: false,
+                                    fashion: false,
+                                    woman: false,
+                                    man: false,
+                                });
+                            } else {
+                                setKeyword("White");
+                                setActiveKeyword({
+                                    tShirt: false,
+                                    black: false,
+                                    white: true,
+                                    fashion: false,
+                                    woman: false,
+                                    man: false,
+                                });
+                            }
+                        }}
+                    >
+                        White
+                    </WSButton>
+                </ContainerBtnKeyword>
+                <ContainerBtnKeyword $active={activeKeyword.fashion}>
+                    <WSButton
+                        onClick={() => {
+                            if (keyword === "Fashion") {
+                                setKeyword("");
+                                setActiveKeyword({
+                                    tShirt: false,
+                                    black: false,
+                                    white: false,
+                                    fashion: false,
+                                    woman: false,
+                                    man: false,
+                                });
+                            } else {
+                                setKeyword("Fashion");
+                                setActiveKeyword({
+                                    tShirt: false,
+                                    black: false,
+                                    white: false,
+                                    fashion: true,
+                                    woman: false,
+                                    man: false,
+                                });
+                            }
+                        }}
+                    >
+                        Fashion
+                    </WSButton>
+                </ContainerBtnKeyword>
+                <ContainerBtnKeyword $active={activeKeyword.woman}>
+                    <WSButton
+                        onClick={() => {
+                            if (keyword === "Woman") {
+                                setKeyword("");
+                                setActiveKeyword({
+                                    tShirt: false,
+                                    black: false,
+                                    white: false,
+                                    fashion: false,
+                                    woman: false,
+                                    man: false,
+                                });
+                            } else {
+                                setKeyword("Woman");
+                                setActiveKeyword({
+                                    tShirt: false,
+                                    black: false,
+                                    white: false,
+                                    fashion: false,
+                                    woman: true,
+                                    man: false,
+                                });
+                            }
+                        }}
+                    >
+                        Woman
+                    </WSButton>
+                </ContainerBtnKeyword>
+                <ContainerBtnKeyword $active={activeKeyword.man}>
+                    <WSButton
+                        onClick={() => {
+                            if (keyword === "Man") {
+                                setKeyword("");
+                                setActiveKeyword({
+                                    tShirt: false,
+                                    black: false,
+                                    white: false,
+                                    fashion: false,
+                                    woman: false,
+                                    man: false,
+                                });
+                            } else {
+                                setKeyword("Man");
+                                setActiveKeyword({
+                                    tShirt: false,
+                                    black: false,
+                                    white: false,
+                                    fashion: false,
+                                    woman: false,
+                                    man: true,
+                                });
+                            }
+                        }}
+                    >
+                        Man
+                    </WSButton>
+                </ContainerBtnKeyword>
             </ContainerKeywordStyle>
         </FilterDisplayStyle>
     );

@@ -47,15 +47,21 @@ export const ContainerBestSaleStyle = styled.div`
 `;
 
 export const ContainerKeywordStyle = styled.div`
+    max-width: 350px;
     margin-top: 45px;
     display: flex;
     flex-wrap: wrap;
+`;
+export const ContainerBtnKeyword = styled.div<{ $active: boolean }>`
+    width: 90px;
+    margin: 5px;
     button {
         max-width: 90px;
-        margin: 5px;
         padding: 5px;
-        background-color: ${() => theme.color.mensTShirtBackground};
-        color: ${() => theme.color.navMenuLink};
+        background-color: ${({ $active }) =>
+            $active ? theme.color.main : theme.color.mensTShirtBackground};
+        color: ${({ $active }) =>
+            $active ? theme.color.base : theme.color.navMenuLink};
         &:hover {
             color: ${() => theme.color.base};
         }

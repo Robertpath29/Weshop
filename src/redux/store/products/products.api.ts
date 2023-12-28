@@ -19,6 +19,7 @@ export const productsApi = createApi({
                 min_price: number;
                 max_price: number;
                 dataSizes: string;
+                keyword: string;
             }
         >({
             query: ({
@@ -30,9 +31,10 @@ export const productsApi = createApi({
                 max_price,
                 min_price,
                 dataSizes,
+                keyword,
             }) =>
                 PRODUCTS_URL +
-                `?page=${current_page}&per_page=${per_page}&sort_by=${sort_by}&color=${color}&category=${category}&min_price=${min_price}&max_price=${max_price}&size=${dataSizes} `,
+                `?page=${current_page}&per_page=${per_page}&sort_by=${sort_by}&color=${color}&category=${category}&min_price=${min_price}&max_price=${max_price}&size=${dataSizes}&keyword=${keyword} `,
         }),
     }),
 });

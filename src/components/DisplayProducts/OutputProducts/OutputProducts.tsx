@@ -9,7 +9,8 @@ const OutputProducts: FC<{
     categoryProduct: string;
     valueRange: number[];
     dataSizes: string;
-}> = ({ categoryProduct, valueRange, dataSizes }) => {
+    keyword: string;
+}> = ({ categoryProduct, valueRange, dataSizes, keyword }) => {
     const [pageCount, setPageCount] = useState<number>(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [perPage, setPerPage] = useState<number>(12);
@@ -45,6 +46,7 @@ const OutputProducts: FC<{
                 sortBy={sortBy}
                 color={color}
                 categoryProduct={categoryProduct}
+                keyword={keyword}
             />
             {pageCount !== 0 && (
                 <ContainerPaginate>
