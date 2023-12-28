@@ -16,7 +16,9 @@ export const ImagesStyle = styled.img`
     height: 100%;
 `;
 
-export const ContainerBlockStyle = styled.div``;
+export const ContainerBlockStyle = styled.div`
+    position: relative;
+`;
 
 export const ContainerListStyle = styled.div`
     margin-top: 30px;
@@ -56,4 +58,39 @@ export const OldPriceStyle = styled(PriceStyle)`
 export const ContainerPrice = styled.div`
     display: flex;
     align-items: center;
+`;
+
+export const ContainerBlockBasketStyle = styled.div`
+    width: 36px;
+    position: absolute;
+    right: 0;
+    bottom: 40px;
+`;
+
+export const ContainerBlockFavoritesStyle = styled(ContainerBlockBasketStyle)`
+    bottom: 100px;
+`;
+export const ContainerBlockViewStyle = styled(ContainerBlockBasketStyle)`
+    bottom: 160px;
+`;
+
+export const ContainerGroupBtnStyle = styled.div`
+    display: flex;
+    margin-top: 40px;
+`;
+
+export const ContainerListBasketStyle = styled.div`
+    width: 36px;
+    height: 31px;
+    & > div {
+        height: 100%;
+    }
+`;
+export const ContainerListFavoritesStyle = styled(ContainerListBasketStyle)`
+    width: 36px;
+    margin-right: 20px;
+`;
+export const ContainerListViewStyle = styled(ContainerListBasketStyle)`
+    width: 36px;
+    margin-right: 150px;
 `;
