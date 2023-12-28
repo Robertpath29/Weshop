@@ -12,6 +12,8 @@ import FilterCheckBox from "./FilterRadio/FilterRadio";
 import FilterCategory from "./FilterCategory/FilterCategory";
 import { useSelector } from "react-redux";
 import { reducersType } from "../../../redux/combineReducer/combineReducer";
+import Loading from "../../Loading/Loading";
+import BestSaleCard from "./BestSaleCard/BestSaleCard";
 
 const FilterDisplay: FC<{
     setCategoryProduct: React.Dispatch<React.SetStateAction<string>>;
@@ -19,7 +21,7 @@ const FilterDisplay: FC<{
     setDataSizes: React.Dispatch<React.SetStateAction<string>>;
     dataSizes: string;
 }> = ({ setCategoryProduct, setValueRange, dataSizes, setDataSizes }) => {
-    const { max_price } = useSelector(
+    const { max_price, best_sale } = useSelector(
         (state: reducersType) => state.filterProduct
     );
     const [range, setRange] = useState<number[]>([0, 0]);
@@ -56,7 +58,18 @@ const FilterDisplay: FC<{
             <FilterCheckBox dataSizes={dataSizes} setDataSizes={setDataSizes} />
             <h1>best sale</h1>
             <hr />
-            <ContainerBestSaleStyle></ContainerBestSaleStyle>
+            <ContainerBestSaleStyle>
+                {best_sale ? (
+                    best_sale.map((product) => (
+                        <BestSaleCard
+                            product={product}
+                            key={product.product.id}
+                        />
+                    ))
+                ) : (
+                    <Loading />
+                )}
+            </ContainerBestSaleStyle>
             <h1>keyword</h1>
             <hr />
             <ContainerKeywordStyle>

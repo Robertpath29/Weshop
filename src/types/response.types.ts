@@ -10,9 +10,10 @@ export type responseType = {
     images?: image[];
     products?: products[];
     total_pages?: number;
-    category?: string[];
+    oll_category?: string[];
     max_price?: string;
     oll_sizes?: string[];
+    best_sale?: products[];
 };
 
 type warningType = {

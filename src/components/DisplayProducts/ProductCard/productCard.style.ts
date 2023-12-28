@@ -34,11 +34,7 @@ export const ContainerInfoStyle = styled.div`
         font-size: 1.2rem;
         margin-bottom: 20px;
     }
-    & > span {
-        font-size: 1.1rem;
-        font-weight: bold;
-        color: ${() => theme.color.main};
-    }
+
     & > hr {
         margin: 25px 0;
         width: 100px;
@@ -46,4 +42,18 @@ export const ContainerInfoStyle = styled.div`
     & > p {
         color: ${() => theme.color.navMenuLink};
     }
+`;
+
+export const PriceStyle = styled.span`
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: ${() => theme.color.main};
+`;
+export const OldPriceStyle = styled(PriceStyle)`
+    text-decoration: line-through;
+`;
+
+export const ContainerPrice = styled.div`
+    display: flex;
+    align-items: center;
 `;

@@ -4,10 +4,14 @@ import {
     ContainerImageStyle,
     ContainerInfoStyle,
     ContainerListStyle,
+    ContainerPrice,
     ImagesStyle,
+    OldPriceStyle,
+    PriceStyle,
     ProductCardStyle,
 } from "./productCard.style";
 import { products } from "../../../types/response.types";
+import { formatPrice } from "../../../utils/formatPrice";
 
 const ProductCard: FC<{
     product: products;
@@ -32,7 +36,19 @@ const ProductCard: FC<{
                     </ContainerImageStyle>
                     <ContainerInfoStyle>
                         <h1>{product.product.title}</h1>
-                        <span>${product.product.price}</span>
+                        <ContainerPrice>
+                            {product.product.old_price && (
+                                <OldPriceStyle>
+                                    ${formatPrice(product.product.old_price)}
+                                </OldPriceStyle>
+                            )}
+                            {product.product.old_price && (
+                                <span>&nbsp;-&nbsp;</span>
+                            )}
+                            <PriceStyle>
+                                ${formatPrice(product.product.price)}
+                            </PriceStyle>
+                        </ContainerPrice>
                         <hr />
                         <p>{product.product.description}</p>
                     </ContainerInfoStyle>

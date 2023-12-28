@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { filterSliceType } from "./filterSlice.types";
 
-const initialState = {
+const initialState: filterSliceType = {
     categoryCountProduct: {
         woman: 0,
         man: 0,
@@ -19,6 +20,7 @@ const initialState = {
         xxxl: 0,
     },
     max_price: 0,
+    best_sale: [],
 };
 
 export const filterProductSlice = createSlice({
@@ -33,6 +35,9 @@ export const filterProductSlice = createSlice({
         },
         getCountSizes: (state, { payload }) => {
             state.countSizes = payload;
+        },
+        getBestSale: (state, { payload }) => {
+            state.best_sale = payload;
         },
     },
 });

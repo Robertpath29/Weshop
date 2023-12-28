@@ -31,8 +31,12 @@ const Products: FC<{
 }) => {
     const [arrayProducts, setArrayProducts] = useState<products[]>();
     const [notFound, isNotFound] = useState(false);
-    const { getNumberProductCategory, getMaxPrice, getCountSizes } =
-        useAction();
+    const {
+        getNumberProductCategory,
+        getMaxPrice,
+        getCountSizes,
+        getBestSale,
+    } = useAction();
     const { data, isLoading } = useGetProductsQuery({
         current_page: currentPage,
         per_page: perPage,
@@ -45,8 +49,9 @@ const Products: FC<{
     });
 
     useEffect(() => {
-        getNumberProductCategory(getCountProductCategory(data?.category));
+        getNumberProductCategory(getCountProductCategory(data?.oll_category));
         getCountSizes(getCountSizesProduct(data?.oll_sizes));
+        getBestSale(data?.best_sale);
         if (data?.max_price) {
             getMaxPrice(parseFloat(data.max_price));
         }

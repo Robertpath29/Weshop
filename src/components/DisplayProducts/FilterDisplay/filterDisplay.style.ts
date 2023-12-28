@@ -42,6 +42,7 @@ export const ContainerFilterPriceStyle = styled.div`
 `;
 
 export const ContainerBestSaleStyle = styled.div`
+    margin-top: 40px;
     margin-bottom: 45px;
 `;
 
