@@ -38,7 +38,7 @@ export const ContainerInfoStyle = styled.div`
     }
 
     & > hr {
-        margin: 25px 0;
+        margin: 25px 0 !important;
         width: 100px;
     }
     & > p {
@@ -56,6 +56,7 @@ export const OldPriceStyle = styled(PriceStyle)`
 `;
 
 export const ContainerPrice = styled.div`
+    margin-top: 10px;
     display: flex;
     align-items: center;
 `;
@@ -93,4 +94,27 @@ export const ContainerListFavoritesStyle = styled(ContainerListBasketStyle)`
 export const ContainerListViewStyle = styled(ContainerListBasketStyle)`
     width: 36px;
     margin-right: 150px;
+`;
+
+export const ContainerStarsStyle = styled.div`
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    h1 {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 400;
+    }
+    span {
+        color: ${() => theme.color.main};
+    }
+    & > hr {
+        margin: 0 20px !important;
+        width: 20px;
+        transform: rotate(90deg);
+    }
+`;
+export const NumberRatingStyle = styled.span`
+    margin-left: 10px;
+    margin-bottom: 3px;
 `;

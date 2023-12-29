@@ -12,7 +12,9 @@ import {
     ContainerListStyle,
     ContainerListViewStyle,
     ContainerPrice,
+    ContainerStarsStyle,
     ImagesStyle,
+    NumberRatingStyle,
     OldPriceStyle,
     PriceStyle,
     ProductCardStyle,
@@ -24,6 +26,7 @@ import WSBtnProduct from "../../UI/WSBtnProduct/WSBtnProduct";
 import { FaRegHeart } from "react-icons/fa";
 import { ContainerPriceStyle } from "../../UI/WSBtnProduct/wSBtnProduct.style";
 import { LiaEye } from "react-icons/lia";
+import StarsRating from "../../StarsRating/StarsRating";
 
 const ProductCard: FC<{
     product: products;
@@ -32,6 +35,9 @@ const ProductCard: FC<{
     const [activeBasket, isActiveBasket] = useState(false);
     const [activeFavorites, isActiveFavorites] = useState(false);
     const [activeView, isActiveView] = useState(false);
+    const [numberRating, setNumberRating] = useState("");
+
+    const [activeStars, isActiveStars] = useState(true);
     return (
         <ProductCardStyle
             $prodDisplay={productDisplay}
@@ -113,6 +119,20 @@ const ProductCard: FC<{
                                 ${formatPrice(product.product.price)}
                             </PriceStyle>
                         </ContainerPrice>
+                        <ContainerStarsStyle>
+                            <h1>
+                                Availability: <span>IN STOCK</span>
+                            </h1>
+                            <hr />
+                            <StarsRating
+                                changeRating={false}
+                                setNumberRating={setNumberRating}
+                                product={product}
+                            />
+                            <NumberRatingStyle>
+                                {numberRating}
+                            </NumberRatingStyle>
+                        </ContainerStarsStyle>
                         <hr />
                         <p>{product.product.description}</p>
                         <ContainerGroupBtnStyle>

@@ -44,6 +44,8 @@ export type product = {
     sizes: string[];
     price: string;
     old_price: string;
+    users_who_have_rated: number[];
+    number_all_stars: number;
     created_at: string;
     updated_at: string;
 };

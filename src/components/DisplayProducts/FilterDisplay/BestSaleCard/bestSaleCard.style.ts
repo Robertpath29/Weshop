@@ -17,6 +17,6 @@ export const ContainerInfoStyle = styled.div`
     & > h1 {
         font-weight: 300;
         font-size: 1.07rem;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 `;
