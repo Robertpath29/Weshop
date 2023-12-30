@@ -1,15 +1,15 @@
-import React from "react";
+import React, { FC } from "react";
 import { HistoryNavStyle } from "./historyNav.style";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 
-const HistoryNav = () => {
+const HistoryNav: FC<{ colorBackground?: string }> = ({ colorBackground }) => {
     const location = useLocation();
     const pathnames = location.pathname.split("/").filter((x) => x);
 
     return (
-        <HistoryNavStyle>
+        <HistoryNavStyle $colorBackground={colorBackground}>
             <ul>
                 <li>
                     <Link to={"/"}>Home</Link>

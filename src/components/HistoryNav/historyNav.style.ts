@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { theme } from "../../style/theme.style";
 
-export const HistoryNavStyle = styled.div`
-    background-color: ${() => theme.color.mensTShirtBackground};
+export const HistoryNavStyle = styled.div<{ $colorBackground?: string }>`
+    background-color: ${({ $colorBackground }) =>
+        $colorBackground ? $colorBackground : theme.color.mensTShirtBackground};
     & > ul {
         max-width: ${() => theme.size.globalWidth + "px"};
         margin: 0 auto;

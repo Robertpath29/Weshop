@@ -36,7 +36,10 @@ export const productsApi = createApi({
                 PRODUCTS_URL +
                 `?page=${current_page}&per_page=${per_page}&sort_by=${sort_by}&color=${color}&category=${category}&min_price=${min_price}&max_price=${max_price}&size=${dataSizes}&keyword=${keyword} `,
         }),
+        getOneProduct: build.query<responseType, number>({
+            query: (id) => PRODUCTS_URL + "/" + id,
+        }),
     }),
 });
 
-export const { useGetProductsQuery } = productsApi;
+export const { useGetProductsQuery, useGetOneProductQuery } = productsApi;
