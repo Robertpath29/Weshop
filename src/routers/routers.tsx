@@ -9,6 +9,7 @@ import PasswordResetPage from "../pages/PasswordResetPage/PasswordResetPage";
 import AdminPanel from "../pages/AdminPanel/AdminPanel";
 import ModeratorPanel from "../pages/ModeratorPanel/ModeratorPanel";
 import ShopPage from "../pages/ShopPage/ShopPage";
+import ProductPage from "../pages/ProductPage/ProductPage";
 
 export const zeroPage: routersType = [{ path: "/", element: <></> }];
 
@@ -19,12 +20,26 @@ export const appPages: routersType = [
     { path: "/login/register", element: <RegisterPage /> },
     { path: "/password_reset/edit", element: <PasswordResetPage /> },
     { path: "/shop", element: <ShopPage /> },
+    { path: "/shop/:category", element: <ShopPage /> },
+    { path: "/shop/:sort", element: <ShopPage /> },
+    { path: "/shop/:category/:sort", element: <ShopPage /> },
+    {
+        path: "/shop/:category/:sort/:title/:id",
+        element: <ProductPage />,
+    },
 ];
 export const appPagesUser: routersType = [
     { path: "/", element: <MainPage /> },
     { path: "*", element: <NotFound404Page /> },
     { path: "/user/setting", element: <UserSettingsPage /> },
     { path: "/shop", element: <ShopPage /> },
+    { path: "/shop/:category", element: <ShopPage /> },
+    { path: "/shop/:sort", element: <ShopPage /> },
+    { path: "/shop/:category/:sort", element: <ShopPage /> },
+    {
+        path: "/shop/:category/:sort/:title/:id",
+        element: <ProductPage />,
+    },
 ];
 
 export const appPagesAdmin: routersType = [

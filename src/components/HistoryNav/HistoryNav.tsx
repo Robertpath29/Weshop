@@ -14,16 +14,42 @@ const HistoryNav = () => {
                 <li>
                     <Link to={"/"}>Home</Link>
                 </li>
-                {pathnames.map((name, index) => (
-                    <li key={name}>
-                        <IoIosArrowForward />
-                        <Link
-                            to={`/${pathnames.slice(0, index + 1).join("/")}`}
-                        >
-                            {name[0].toUpperCase() + name.slice(1)}
-                        </Link>
-                    </li>
-                ))}
+                {pathnames.map((name, index) => {
+                    let numberLength = 0;
+                    if (Number(pathnames[pathnames.length - 1])) {
+                        numberLength = 2;
+                        if (name === pathnames[pathnames.length - 1]) return;
+                    } else {
+                        numberLength = 1;
+                    }
+                    const lastElem = index === pathnames.length - numberLength;
+
+                    return (
+                        <li key={name}>
+                            <IoIosArrowForward />
+                            {lastElem ? (
+                                <span>
+                                    {decodeURIComponent(
+                                        name[0].toUpperCase() + name.slice(1)
+                                    )}
+                                </span>
+                            ) : (
+                                <>
+                                    <Link
+                                        to={`/${pathnames
+                                            .slice(0, index + 1)
+                                            .join("/")}`}
+                                    >
+                                        {decodeURIComponent(
+                                            name[0].toUpperCase() +
+                                                name.slice(1)
+                                        )}
+                                    </Link>
+                                </>
+                            )}
+                        </li>
+                    );
+                })}
             </ul>
         </HistoryNavStyle>
     );

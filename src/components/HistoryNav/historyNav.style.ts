@@ -25,11 +25,9 @@ export const HistoryNavStyle = styled.div`
                     color: ${() => theme.color.main};
                 }
             }
-            &:last-child {
-                & > a {
-                    cursor: default;
-                    color: ${() => theme.color.navMenuLink};
-                }
+            & > span {
+                cursor: default;
+                color: ${() => theme.color.navMenuLink};
             }
         }
     }

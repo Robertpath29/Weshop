@@ -3,7 +3,7 @@ import { theme } from "../../../style/theme.style";
 
 export const ProductCardStyle = styled.div<{ $prodDisplay: string }>`
     width: ${({ $prodDisplay }) =>
-        $prodDisplay === "block" ? "235px" : "100%"};
+        $prodDisplay === "block" ? "245px" : "100%"};
     margin-top: 13px;
     margin-bottom: 5px;
     & > hr {
@@ -18,6 +18,8 @@ export const ImagesStyle = styled.img`
 
 export const ContainerBlockStyle = styled.div`
     position: relative;
+
+    height: 350px;
 `;
 
 export const ContainerListStyle = styled.div`

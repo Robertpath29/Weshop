@@ -27,6 +27,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { ContainerPriceStyle } from "../../UI/WSBtnProduct/wSBtnProduct.style";
 import { LiaEye } from "react-icons/lia";
 import StarsRating from "../../StarsRating/StarsRating";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard: FC<{
     product: products;
@@ -37,7 +38,7 @@ const ProductCard: FC<{
     const [activeView, isActiveView] = useState(false);
     const [numberRating, setNumberRating] = useState("");
 
-    const [activeStars, isActiveStars] = useState(true);
+    const routeProduct = useNavigate();
     return (
         <ProductCardStyle
             $prodDisplay={productDisplay}
@@ -63,6 +64,11 @@ const ProductCard: FC<{
                         }}
                         onMouseOut={() => {
                             isActiveView(false);
+                        }}
+                        onClick={() => {
+                            routeProduct(
+                                `/shop/${product.product.category}/${product.product.type_of_clothing}/${product.product.title}/${product.product.id}`
+                            );
                         }}
                     >
                         <WSBtnProduct
@@ -157,6 +163,11 @@ const ProductCard: FC<{
                                 }}
                                 onMouseOut={() => {
                                     isActiveView(false);
+                                }}
+                                onClick={() => {
+                                    routeProduct(
+                                        `/shop/${product.product.category}/${product.product.type_of_clothing}/${product.product.title}/${product.product.id}`
+                                    );
                                 }}
                             >
                                 <WSBtnProduct
