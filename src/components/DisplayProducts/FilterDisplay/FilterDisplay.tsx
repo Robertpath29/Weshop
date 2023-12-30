@@ -21,6 +21,16 @@ const FilterDisplay: FC<{
     setValueRange: React.Dispatch<React.SetStateAction<number[]>>;
     setDataSizes: React.Dispatch<React.SetStateAction<string>>;
     setKeyword: React.Dispatch<React.SetStateAction<string>>;
+    setPathHistory: React.Dispatch<
+        React.SetStateAction<{
+            category: string;
+            sort: string;
+        }>
+    >;
+    pathHistory: {
+        category: string;
+        sort: string;
+    };
     dataSizes: string;
     keyword: string;
 }> = ({
@@ -30,6 +40,8 @@ const FilterDisplay: FC<{
     setDataSizes,
     setKeyword,
     keyword,
+    setPathHistory,
+    pathHistory,
 }) => {
     const [activeKeyword, setActiveKeyword] = useState({
         tShirt: false,
@@ -51,7 +63,11 @@ const FilterDisplay: FC<{
         <FilterDisplayStyle>
             <h1>Category</h1>
             <hr />
-            <FilterCategory setCategoryProduct={setCategoryProduct} />
+            <FilterCategory
+                pathHistory={pathHistory}
+                setCategoryProduct={setCategoryProduct}
+                setPathHistory={setPathHistory}
+            />
             <h1>price by filter</h1>
             <hr />
             <ContainerRangeStyle>

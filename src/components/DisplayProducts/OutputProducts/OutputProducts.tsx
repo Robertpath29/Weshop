@@ -10,7 +10,24 @@ const OutputProducts: FC<{
     valueRange: number[];
     dataSizes: string;
     keyword: string;
-}> = ({ categoryProduct, valueRange, dataSizes, keyword }) => {
+    pathHistory: {
+        category: string;
+        sort: string;
+    };
+    setPathHistory: React.Dispatch<
+        React.SetStateAction<{
+            category: string;
+            sort: string;
+        }>
+    >;
+}> = ({
+    categoryProduct,
+    valueRange,
+    dataSizes,
+    keyword,
+    setPathHistory,
+    pathHistory,
+}) => {
     const [pageCount, setPageCount] = useState<number>(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [perPage, setPerPage] = useState<number>(12);
@@ -30,6 +47,8 @@ const OutputProducts: FC<{
     return (
         <OutputProductsStyle>
             <FilterOutput
+                pathHistory={pathHistory}
+                setPathHistory={setPathHistory}
                 setProductDisplay={setProductDisplay}
                 setPerPage={setPerPage}
                 setSortBy={setSortBy}

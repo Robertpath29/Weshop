@@ -10,12 +10,33 @@ const FilterOutput: FC<{
     setSortBy: React.Dispatch<React.SetStateAction<string>>;
     setColor: React.Dispatch<React.SetStateAction<string>>;
     setProductDisplay: React.Dispatch<React.SetStateAction<string>>;
-}> = ({ setPerPage, setSortBy, setColor, setProductDisplay }) => {
+    setPathHistory: React.Dispatch<
+        React.SetStateAction<{
+            category: string;
+            sort: string;
+        }>
+    >;
+    pathHistory: {
+        category: string;
+        sort: string;
+    };
+}> = ({
+    setPerPage,
+    setSortBy,
+    setColor,
+    setProductDisplay,
+    setPathHistory,
+    pathHistory,
+}) => {
     return (
         <FilterOutputStyle>
             <ProductDisplayOption setProductDisplay={setProductDisplay} />
             <FilterColor setColor={setColor} />
-            <SortBy setSortBy={setSortBy} />
+            <SortBy
+                setSortBy={setSortBy}
+                setPathHistory={setPathHistory}
+                pathHistory={pathHistory}
+            />
             <Shows setPerPage={setPerPage} />
         </FilterOutputStyle>
     );
