@@ -19,6 +19,7 @@ const FilterCategory: FC<{
         sort: string;
         keyword: string;
     };
+    setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
     setActiveKeyword: React.Dispatch<
         React.SetStateAction<{
             tShirt: boolean;
@@ -35,6 +36,7 @@ const FilterCategory: FC<{
     pathHistory,
     setKeyword,
     setActiveKeyword,
+    setCurrentPage,
 }) => {
     const path = useLocation().pathname;
     const [category, isCategory] = useState({
@@ -91,6 +93,7 @@ const FilterCategory: FC<{
                         );
                     } else {
                         setCategoryProduct("woman");
+                        setCurrentPage(1);
                         setKeyword("");
                         setPathHistory({
                             ...pathHistory,
@@ -138,6 +141,7 @@ const FilterCategory: FC<{
                         );
                     } else {
                         setCategoryProduct("man");
+                        setCurrentPage(1);
                         setKeyword("");
                         setPathHistory({
                             ...pathHistory,
@@ -185,6 +189,7 @@ const FilterCategory: FC<{
                         );
                     } else {
                         setCategoryProduct("kids");
+                        setCurrentPage(1);
                         setKeyword("");
                         setPathHistory({
                             ...pathHistory,
@@ -232,6 +237,7 @@ const FilterCategory: FC<{
                         );
                     } else {
                         setCategoryProduct("bags");
+                        setCurrentPage(1);
                         setKeyword("");
                         setPathHistory({
                             ...pathHistory,
@@ -279,6 +285,7 @@ const FilterCategory: FC<{
                         );
                     } else {
                         setCategoryProduct("accessories");
+                        setCurrentPage(1);
                         setKeyword("");
                         setPathHistory({
                             ...pathHistory,
@@ -326,6 +333,7 @@ const FilterCategory: FC<{
                         );
                     } else {
                         setCategoryProduct("watch");
+                        setCurrentPage(1);
                         setKeyword("");
                         setPathHistory({
                             ...pathHistory,

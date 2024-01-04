@@ -17,6 +17,7 @@ const SortBy: FC<{
         sort: string;
         keyword: string;
     };
+    setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
     setActiveKeyword: React.Dispatch<
         React.SetStateAction<{
             tShirt: boolean;
@@ -33,6 +34,7 @@ const SortBy: FC<{
     pathHistory,
     setKeyword,
     setActiveKeyword,
+    setCurrentPage,
 }) => {
     const routeSort = useNavigate();
     const path = useLocation().pathname;
@@ -64,6 +66,7 @@ const SortBy: FC<{
                     setSortBy(e.target.value);
                     if (e.target.value === "data") {
                         setPathHistory({ ...pathHistory, sort: "" });
+                        setCurrentPage(1);
                         setKeyword("");
                         setActiveKeyword({
                             tShirt: false,
@@ -81,6 +84,7 @@ const SortBy: FC<{
                         return;
                     }
                     setKeyword("");
+                    setCurrentPage(1);
                     setActiveKeyword({
                         tShirt: false,
                         black: false,

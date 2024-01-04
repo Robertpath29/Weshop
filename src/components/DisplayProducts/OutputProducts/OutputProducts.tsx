@@ -22,6 +22,7 @@ const OutputProducts: FC<{
             keyword: string;
         }>
     >;
+    setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
     setActiveKeyword: React.Dispatch<
         React.SetStateAction<{
             tShirt: boolean;
@@ -33,6 +34,7 @@ const OutputProducts: FC<{
         }>
     >;
     setKeyword: React.Dispatch<React.SetStateAction<string>>;
+    currentPage: number;
 }> = ({
     categoryProduct,
     valueRange,
@@ -42,9 +44,10 @@ const OutputProducts: FC<{
     pathHistory,
     setKeyword,
     setActiveKeyword,
+    setCurrentPage,
+    currentPage,
 }) => {
     const [pageCount, setPageCount] = useState<number>(0);
-    const [currentPage, setCurrentPage] = useState(1);
     const [perPage, setPerPage] = useState<number>(12);
     const [sortBy, setSortBy] = useState<string>("data");
     const [color, setColor] = useState("");
@@ -62,6 +65,7 @@ const OutputProducts: FC<{
     return (
         <OutputProductsStyle>
             <FilterOutput
+                setCurrentPage={setCurrentPage}
                 setActiveKeyword={setActiveKeyword}
                 setKeyword={setKeyword}
                 pathHistory={pathHistory}

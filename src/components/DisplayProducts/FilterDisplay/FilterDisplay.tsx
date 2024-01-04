@@ -39,6 +39,7 @@ const FilterDisplay: FC<{
             man: boolean;
         }>
     >;
+    setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
     activeKeyword: {
         tShirt: boolean;
         black: boolean;
@@ -65,6 +66,7 @@ const FilterDisplay: FC<{
     pathHistory,
     activeKeyword,
     setActiveKeyword,
+    setCurrentPage,
 }) => {
     const { max_price, best_sale } = useSelector(
         (state: reducersType) => state.filterProduct
@@ -79,6 +81,7 @@ const FilterDisplay: FC<{
             <h1>Category</h1>
             <hr />
             <FilterCategory
+                setCurrentPage={setCurrentPage}
                 setActiveKeyword={setActiveKeyword}
                 pathHistory={pathHistory}
                 setCategoryProduct={setCategoryProduct}

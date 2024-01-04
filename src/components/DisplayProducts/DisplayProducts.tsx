@@ -8,6 +8,7 @@ const DisplayProducts = () => {
     const [valueRange, setValueRange] = useState<number[]>([0, 0]);
     const [dataSizes, setDataSizes] = useState<string>("");
     const [keyword, setKeyword] = useState<string>("");
+    const [currentPage, setCurrentPage] = useState(1);
     const [pathHistory, setPathHistory] = useState({
         category: "",
         sort: "",
@@ -25,6 +26,7 @@ const DisplayProducts = () => {
     return (
         <DisplayProductsStyle>
             <FilterDisplay
+                setCurrentPage={setCurrentPage}
                 activeKeyword={activeKeyword}
                 setActiveKeyword={setActiveKeyword}
                 pathHistory={pathHistory}
@@ -37,6 +39,8 @@ const DisplayProducts = () => {
                 setKeyword={setKeyword}
             />
             <OutputProducts
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
                 setActiveKeyword={setActiveKeyword}
                 setKeyword={setKeyword}
                 pathHistory={pathHistory}

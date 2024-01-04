@@ -11,6 +11,7 @@ const FilterOutput: FC<{
     setColor: React.Dispatch<React.SetStateAction<string>>;
     setProductDisplay: React.Dispatch<React.SetStateAction<string>>;
     setKeyword: React.Dispatch<React.SetStateAction<string>>;
+    setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
     setPathHistory: React.Dispatch<
         React.SetStateAction<{
             category: string;
@@ -42,12 +43,14 @@ const FilterOutput: FC<{
     pathHistory,
     setKeyword,
     setActiveKeyword,
+    setCurrentPage,
 }) => {
     return (
         <FilterOutputStyle>
             <ProductDisplayOption setProductDisplay={setProductDisplay} />
             <FilterColor setColor={setColor} />
             <SortBy
+                setCurrentPage={setCurrentPage}
                 setActiveKeyword={setActiveKeyword}
                 setKeyword={setKeyword}
                 setSortBy={setSortBy}
