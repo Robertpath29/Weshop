@@ -8,13 +8,32 @@ const SortBy: FC<{
         React.SetStateAction<{
             category: string;
             sort: string;
+            keyword: string;
         }>
     >;
+    setKeyword: React.Dispatch<React.SetStateAction<string>>;
     pathHistory: {
         category: string;
         sort: string;
+        keyword: string;
     };
-}> = ({ setSortBy, setPathHistory, pathHistory }) => {
+    setActiveKeyword: React.Dispatch<
+        React.SetStateAction<{
+            tShirt: boolean;
+            black: boolean;
+            white: boolean;
+            fashion: boolean;
+            woman: boolean;
+            man: boolean;
+        }>
+    >;
+}> = ({
+    setSortBy,
+    setPathHistory,
+    pathHistory,
+    setKeyword,
+    setActiveKeyword,
+}) => {
     const routeSort = useNavigate();
     const path = useLocation().pathname;
     useEffect(() => {
@@ -45,6 +64,15 @@ const SortBy: FC<{
                     setSortBy(e.target.value);
                     if (e.target.value === "data") {
                         setPathHistory({ ...pathHistory, sort: "" });
+                        setKeyword("");
+                        setActiveKeyword({
+                            tShirt: false,
+                            black: false,
+                            white: false,
+                            fashion: false,
+                            woman: false,
+                            man: false,
+                        });
                         routeSort(
                             `/shop/${
                                 pathHistory.category && pathHistory.category
@@ -52,7 +80,20 @@ const SortBy: FC<{
                         );
                         return;
                     }
-                    setPathHistory({ ...pathHistory, sort: e.target.value });
+                    setKeyword("");
+                    setActiveKeyword({
+                        tShirt: false,
+                        black: false,
+                        white: false,
+                        fashion: false,
+                        woman: false,
+                        man: false,
+                    });
+                    setPathHistory({
+                        ...pathHistory,
+                        sort: e.target.value,
+                        category: "",
+                    });
                     routeSort(
                         `/shop/${
                             pathHistory.category && pathHistory.category + "/"

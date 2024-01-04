@@ -10,13 +10,32 @@ const FilterCategory: FC<{
         React.SetStateAction<{
             category: string;
             sort: string;
+            keyword: string;
         }>
     >;
+    setKeyword: React.Dispatch<React.SetStateAction<string>>;
     pathHistory: {
         category: string;
         sort: string;
+        keyword: string;
     };
-}> = ({ setCategoryProduct, setPathHistory, pathHistory }) => {
+    setActiveKeyword: React.Dispatch<
+        React.SetStateAction<{
+            tShirt: boolean;
+            black: boolean;
+            white: boolean;
+            fashion: boolean;
+            woman: boolean;
+            man: boolean;
+        }>
+    >;
+}> = ({
+    setCategoryProduct,
+    setPathHistory,
+    pathHistory,
+    setKeyword,
+    setActiveKeyword,
+}) => {
     const path = useLocation().pathname;
     const [category, isCategory] = useState({
         woman: false,
@@ -72,7 +91,12 @@ const FilterCategory: FC<{
                         );
                     } else {
                         setCategoryProduct("woman");
-                        setPathHistory({ ...pathHistory, category: "woman" });
+                        setKeyword("");
+                        setPathHistory({
+                            ...pathHistory,
+                            category: "woman",
+                            keyword: "",
+                        });
                         routeCategory(
                             `/shop/woman${
                                 pathHistory.sort && "/" + pathHistory.sort
@@ -86,6 +110,14 @@ const FilterCategory: FC<{
                             bags: false,
                             accessories: false,
                             watch: false,
+                        });
+                        setActiveKeyword({
+                            tShirt: false,
+                            black: false,
+                            white: false,
+                            fashion: false,
+                            woman: false,
+                            man: false,
                         });
                     }
                 }}
@@ -106,7 +138,12 @@ const FilterCategory: FC<{
                         );
                     } else {
                         setCategoryProduct("man");
-                        setPathHistory({ ...pathHistory, category: "man" });
+                        setKeyword("");
+                        setPathHistory({
+                            ...pathHistory,
+                            category: "man",
+                            keyword: "",
+                        });
                         routeCategory(
                             `/shop/man${
                                 pathHistory.sort && "/" + pathHistory.sort
@@ -120,6 +157,14 @@ const FilterCategory: FC<{
                             bags: false,
                             accessories: false,
                             watch: false,
+                        });
+                        setActiveKeyword({
+                            tShirt: false,
+                            black: false,
+                            white: false,
+                            fashion: false,
+                            woman: false,
+                            man: false,
                         });
                     }
                 }}
@@ -140,7 +185,12 @@ const FilterCategory: FC<{
                         );
                     } else {
                         setCategoryProduct("kids");
-                        setPathHistory({ ...pathHistory, category: "kids" });
+                        setKeyword("");
+                        setPathHistory({
+                            ...pathHistory,
+                            category: "kids",
+                            keyword: "",
+                        });
                         routeCategory(
                             `/shop/kids${
                                 pathHistory.sort && "/" + pathHistory.sort
@@ -154,6 +204,14 @@ const FilterCategory: FC<{
                             bags: false,
                             accessories: false,
                             watch: false,
+                        });
+                        setActiveKeyword({
+                            tShirt: false,
+                            black: false,
+                            white: false,
+                            fashion: false,
+                            woman: false,
+                            man: false,
                         });
                     }
                 }}
@@ -174,7 +232,12 @@ const FilterCategory: FC<{
                         );
                     } else {
                         setCategoryProduct("bags");
-                        setPathHistory({ ...pathHistory, category: "bags" });
+                        setKeyword("");
+                        setPathHistory({
+                            ...pathHistory,
+                            category: "bags",
+                            keyword: "",
+                        });
                         routeCategory(
                             `/shop/bags${
                                 pathHistory.sort && "/" + pathHistory.sort
@@ -188,6 +251,14 @@ const FilterCategory: FC<{
                             bags: true,
                             accessories: false,
                             watch: false,
+                        });
+                        setActiveKeyword({
+                            tShirt: false,
+                            black: false,
+                            white: false,
+                            fashion: false,
+                            woman: false,
+                            man: false,
                         });
                     }
                 }}
@@ -208,9 +279,11 @@ const FilterCategory: FC<{
                         );
                     } else {
                         setCategoryProduct("accessories");
+                        setKeyword("");
                         setPathHistory({
                             ...pathHistory,
                             category: "accessories",
+                            keyword: "",
                         });
                         routeCategory(
                             `/shop/accessories${
@@ -225,6 +298,14 @@ const FilterCategory: FC<{
                             bags: false,
                             accessories: true,
                             watch: false,
+                        });
+                        setActiveKeyword({
+                            tShirt: false,
+                            black: false,
+                            white: false,
+                            fashion: false,
+                            woman: false,
+                            man: false,
                         });
                     }
                 }}
@@ -245,7 +326,12 @@ const FilterCategory: FC<{
                         );
                     } else {
                         setCategoryProduct("watch");
-                        setPathHistory({ ...pathHistory, category: "watch" });
+                        setKeyword("");
+                        setPathHistory({
+                            ...pathHistory,
+                            category: "watch",
+                            keyword: "",
+                        });
                         routeCategory(
                             `/shop/watch${
                                 pathHistory.sort && "/" + pathHistory.sort
@@ -259,6 +345,14 @@ const FilterCategory: FC<{
                             bags: false,
                             accessories: false,
                             watch: true,
+                        });
+                        setActiveKeyword({
+                            tShirt: false,
+                            black: false,
+                            white: false,
+                            fashion: false,
+                            woman: false,
+                            man: false,
                         });
                     }
                 }}

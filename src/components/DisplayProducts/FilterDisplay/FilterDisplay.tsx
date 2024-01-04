@@ -15,6 +15,7 @@ import { useSelector } from "react-redux";
 import { reducersType } from "../../../redux/combineReducer/combineReducer";
 import Loading from "../../Loading/Loading";
 import BestSaleCard from "./BestSaleCard/BestSaleCard";
+import { useNavigate } from "react-router-dom";
 
 const FilterDisplay: FC<{
     setCategoryProduct: React.Dispatch<React.SetStateAction<string>>;
@@ -25,11 +26,31 @@ const FilterDisplay: FC<{
         React.SetStateAction<{
             category: string;
             sort: string;
+            keyword: string;
         }>
     >;
+    setActiveKeyword: React.Dispatch<
+        React.SetStateAction<{
+            tShirt: boolean;
+            black: boolean;
+            white: boolean;
+            fashion: boolean;
+            woman: boolean;
+            man: boolean;
+        }>
+    >;
+    activeKeyword: {
+        tShirt: boolean;
+        black: boolean;
+        white: boolean;
+        fashion: boolean;
+        woman: boolean;
+        man: boolean;
+    };
     pathHistory: {
         category: string;
         sort: string;
+        keyword: string;
     };
     dataSizes: string;
     keyword: string;
@@ -42,20 +63,14 @@ const FilterDisplay: FC<{
     keyword,
     setPathHistory,
     pathHistory,
+    activeKeyword,
+    setActiveKeyword,
 }) => {
-    const [activeKeyword, setActiveKeyword] = useState({
-        tShirt: false,
-        black: false,
-        white: false,
-        fashion: false,
-        woman: false,
-        man: false,
-    });
     const { max_price, best_sale } = useSelector(
         (state: reducersType) => state.filterProduct
     );
     const [range, setRange] = useState<number[]>([0, 0]);
-
+    const routeKeyword = useNavigate();
     useEffect(() => {
         setRange([range[0], (range[1] = max_price)]);
     }, [max_price]);
@@ -64,9 +79,11 @@ const FilterDisplay: FC<{
             <h1>Category</h1>
             <hr />
             <FilterCategory
+                setActiveKeyword={setActiveKeyword}
                 pathHistory={pathHistory}
                 setCategoryProduct={setCategoryProduct}
                 setPathHistory={setPathHistory}
+                setKeyword={setKeyword}
             />
             <h1>price by filter</h1>
             <hr />
@@ -120,8 +137,20 @@ const FilterDisplay: FC<{
                                     woman: false,
                                     man: false,
                                 });
+                                setPathHistory({
+                                    category: "",
+                                    sort: "",
+                                    keyword: "",
+                                });
+                                routeKeyword(`/shop`);
                             } else {
                                 setKeyword("T-shirt");
+                                setPathHistory({
+                                    category: "",
+                                    sort: "",
+                                    keyword: "t-shirt",
+                                });
+                                routeKeyword(`/shop/t-shirt`);
                                 setActiveKeyword({
                                     tShirt: true,
                                     black: false,
@@ -140,6 +169,12 @@ const FilterDisplay: FC<{
                     <WSButton
                         onClick={() => {
                             if (keyword === "Black") {
+                                setPathHistory({
+                                    category: "",
+                                    sort: "",
+                                    keyword: "",
+                                });
+                                routeKeyword(`/shop`);
                                 setKeyword("");
                                 setActiveKeyword({
                                     tShirt: false,
@@ -151,6 +186,12 @@ const FilterDisplay: FC<{
                                 });
                             } else {
                                 setKeyword("Black");
+                                setPathHistory({
+                                    category: "",
+                                    sort: "",
+                                    keyword: "black",
+                                });
+                                routeKeyword(`/shop/black`);
                                 setActiveKeyword({
                                     tShirt: false,
                                     black: true,
@@ -169,6 +210,12 @@ const FilterDisplay: FC<{
                     <WSButton
                         onClick={() => {
                             if (keyword === "White") {
+                                setPathHistory({
+                                    category: "",
+                                    sort: "",
+                                    keyword: "",
+                                });
+                                routeKeyword(`/shop`);
                                 setKeyword("");
                                 setActiveKeyword({
                                     tShirt: false,
@@ -180,6 +227,12 @@ const FilterDisplay: FC<{
                                 });
                             } else {
                                 setKeyword("White");
+                                setPathHistory({
+                                    category: "",
+                                    sort: "",
+                                    keyword: "white",
+                                });
+                                routeKeyword(`/shop/white`);
                                 setActiveKeyword({
                                     tShirt: false,
                                     black: false,
@@ -198,6 +251,12 @@ const FilterDisplay: FC<{
                     <WSButton
                         onClick={() => {
                             if (keyword === "Fashion") {
+                                setPathHistory({
+                                    category: "",
+                                    sort: "",
+                                    keyword: "",
+                                });
+                                routeKeyword(`/shop`);
                                 setKeyword("");
                                 setActiveKeyword({
                                     tShirt: false,
@@ -209,6 +268,12 @@ const FilterDisplay: FC<{
                                 });
                             } else {
                                 setKeyword("Fashion");
+                                setPathHistory({
+                                    category: "",
+                                    sort: "",
+                                    keyword: "fashion",
+                                });
+                                routeKeyword(`/shop/fashion`);
                                 setActiveKeyword({
                                     tShirt: false,
                                     black: false,
@@ -227,6 +292,12 @@ const FilterDisplay: FC<{
                     <WSButton
                         onClick={() => {
                             if (keyword === "Woman") {
+                                setPathHistory({
+                                    category: "",
+                                    sort: "",
+                                    keyword: "",
+                                });
+                                routeKeyword(`/shop`);
                                 setKeyword("");
                                 setActiveKeyword({
                                     tShirt: false,
@@ -238,6 +309,12 @@ const FilterDisplay: FC<{
                                 });
                             } else {
                                 setKeyword("Woman");
+                                setPathHistory({
+                                    category: "",
+                                    sort: "",
+                                    keyword: "woman",
+                                });
+                                routeKeyword(`/shop/woman`);
                                 setActiveKeyword({
                                     tShirt: false,
                                     black: false,
@@ -257,6 +334,12 @@ const FilterDisplay: FC<{
                         onClick={() => {
                             if (keyword === "Man") {
                                 setKeyword("");
+                                setPathHistory({
+                                    category: "",
+                                    sort: "",
+                                    keyword: "",
+                                });
+                                routeKeyword(`/shop`);
                                 setActiveKeyword({
                                     tShirt: false,
                                     black: false,
@@ -267,6 +350,12 @@ const FilterDisplay: FC<{
                                 });
                             } else {
                                 setKeyword("Man");
+                                setPathHistory({
+                                    category: "",
+                                    sort: "",
+                                    keyword: "man",
+                                });
+                                routeKeyword(`/shop/man`);
                                 setActiveKeyword({
                                     tShirt: false,
                                     black: false,

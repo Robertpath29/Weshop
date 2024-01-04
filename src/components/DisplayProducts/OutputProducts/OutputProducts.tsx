@@ -13,13 +13,26 @@ const OutputProducts: FC<{
     pathHistory: {
         category: string;
         sort: string;
+        keyword: string;
     };
     setPathHistory: React.Dispatch<
         React.SetStateAction<{
             category: string;
             sort: string;
+            keyword: string;
         }>
     >;
+    setActiveKeyword: React.Dispatch<
+        React.SetStateAction<{
+            tShirt: boolean;
+            black: boolean;
+            white: boolean;
+            fashion: boolean;
+            woman: boolean;
+            man: boolean;
+        }>
+    >;
+    setKeyword: React.Dispatch<React.SetStateAction<string>>;
 }> = ({
     categoryProduct,
     valueRange,
@@ -27,6 +40,8 @@ const OutputProducts: FC<{
     keyword,
     setPathHistory,
     pathHistory,
+    setKeyword,
+    setActiveKeyword,
 }) => {
     const [pageCount, setPageCount] = useState<number>(0);
     const [currentPage, setCurrentPage] = useState(1);
@@ -47,6 +62,8 @@ const OutputProducts: FC<{
     return (
         <OutputProductsStyle>
             <FilterOutput
+                setActiveKeyword={setActiveKeyword}
+                setKeyword={setKeyword}
                 pathHistory={pathHistory}
                 setPathHistory={setPathHistory}
                 setProductDisplay={setProductDisplay}

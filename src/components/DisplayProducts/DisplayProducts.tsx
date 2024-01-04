@@ -11,11 +11,22 @@ const DisplayProducts = () => {
     const [pathHistory, setPathHistory] = useState({
         category: "",
         sort: "",
+        keyword: "",
+    });
+    const [activeKeyword, setActiveKeyword] = useState({
+        tShirt: false,
+        black: false,
+        white: false,
+        fashion: false,
+        woman: false,
+        man: false,
     });
 
     return (
         <DisplayProductsStyle>
             <FilterDisplay
+                activeKeyword={activeKeyword}
+                setActiveKeyword={setActiveKeyword}
                 pathHistory={pathHistory}
                 setPathHistory={setPathHistory}
                 dataSizes={dataSizes}
@@ -26,6 +37,8 @@ const DisplayProducts = () => {
                 setKeyword={setKeyword}
             />
             <OutputProducts
+                setActiveKeyword={setActiveKeyword}
+                setKeyword={setKeyword}
                 pathHistory={pathHistory}
                 setPathHistory={setPathHistory}
                 dataSizes={dataSizes}
