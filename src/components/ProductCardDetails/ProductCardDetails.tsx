@@ -2,6 +2,7 @@ import React, { FC, useState } from "react";
 import {
     ContainerImagesStyle,
     ContainerInfoStyle,
+    ContainerInputStyle,
     ContainerProductCardDetailsStyle,
     ContainerReviewStyle,
     ContainerStarsStyle,
@@ -17,6 +18,7 @@ import CarouselProductDetails from "../CarouselProductDetails/CarouselProductDet
 import { path_img, product } from "../../types/response.types";
 import { formatPrice } from "../../utils/formatPrice";
 import StarsRating from "../StarsRating/StarsRating";
+import WSButtonCountProducts from "../UI/WSButtonCountProducts/WSButtonCountProducts";
 
 const ProductCardDetails: FC<{
     product: product;
@@ -24,6 +26,7 @@ const ProductCardDetails: FC<{
 }> = ({ images, product }) => {
     const [numberRating, setNumberRating] = useState("");
     const [activeStars, isActiveStars] = useState(true);
+    const [countProduct, setCountProduct] = useState(1);
 
     return (
         <ProductCardDetailsStyle>
@@ -62,6 +65,9 @@ const ProductCardDetails: FC<{
                     </ContainerReviewStyle>
                     <hr />
                     <p>{product.description}</p>
+                    <ContainerInputStyle>
+                        <WSButtonCountProducts countProduct={countProduct} />
+                    </ContainerInputStyle>
                 </ContainerInfoStyle>
             </ContainerProductCardDetailsStyle>
         </ProductCardDetailsStyle>

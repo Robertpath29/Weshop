@@ -59,3 +59,7 @@ export const ReviewStyle = styled.span`
         color: ${() => theme.color.main};
     }
 `;
+
+export const ContainerInputStyle = styled.div`
+    margin-top: 40px;
+`;
