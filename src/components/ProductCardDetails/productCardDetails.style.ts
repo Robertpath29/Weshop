@@ -61,5 +61,7 @@ export const ReviewStyle = styled.span`
 `;
 
 export const ContainerInputStyle = styled.div`
+    display: flex;
     margin-top: 40px;
+    gap: 30px;
 `;

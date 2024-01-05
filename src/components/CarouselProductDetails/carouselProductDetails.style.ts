@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { theme } from "../../style/theme.style";
 
 export const CarouselProductDetailsStyle = styled.div`
-    width: 350px;
+    width: 600px;
     height: max-content;
     position: relative;
 
@@ -19,7 +19,7 @@ export const ContainerBtnStyle = styled.div`
     display: flex;
     flex-direction: row;
     z-index: 111;
-    top: 489px;
+    top: 862px;
 
     right: 0;
 

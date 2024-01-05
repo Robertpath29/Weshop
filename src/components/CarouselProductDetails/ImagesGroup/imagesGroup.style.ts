@@ -7,7 +7,7 @@ export const ImagesGroupStyle = styled.div`
     gap: 10px;
     width: 100%;
     & > img {
-        width: 110px !important;
+        width: 193px !important;
         gap: 10px;
         cursor: pointer;
         transition: all 0.3s;
