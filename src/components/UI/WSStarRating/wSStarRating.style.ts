@@ -10,7 +10,6 @@ export const WSStarRatingStyle = styled.div<{ $changeRating: boolean }>`
     stroke: red;
     stroke-width: 100px;
     cursor: ${({ $changeRating }) => ($changeRating ? "pointer" : "auto")};
-    transition: all 0.3s;
     &:hover {
         transform: ${({ $changeRating }) =>
             $changeRating ? "scale(1.2)" : "scale(1.0)"};

@@ -131,9 +131,10 @@ const ProductCard: FC<{
                             </h1>
                             <hr />
                             <StarsRating
+                                imageStar="/images/StarSVG.svg"
                                 changeRating={false}
                                 setNumberRating={setNumberRating}
-                                product={product}
+                                product={product.product}
                             />
                             <NumberRatingStyle>
                                 {numberRating}

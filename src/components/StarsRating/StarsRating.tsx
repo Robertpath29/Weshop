@@ -12,6 +12,7 @@ const StarsRating: FC<starsRatingType> = ({
     product,
     setNumberRating,
     isActiveStars,
+    imageStar,
 }) => {
     const [statusRating, setStatusRating] = useState(0);
     const userId = useSelector((state: reducersType) => state.user.id);
@@ -19,32 +20,28 @@ const StarsRating: FC<starsRatingType> = ({
 
     const changeProductRating = async (productRating: number) => {
         if (!userId) routeLogin("/login");
-        const response = await axiosPut(
-            PRODUCTS_URL + `/${product.product.id}`,
-            {
-                user_id: userId,
-                rating: productRating,
-            }
-        );
+        const response = await axiosPut(PRODUCTS_URL + `/${product.id}`, {
+            user_id: userId,
+            rating: productRating,
+        });
         if (isActiveStars) isActiveStars(false);
         window.location.reload();
     };
     useEffect(() => {
-        if (changeRating && userId) {
-            const isUserRated =
-                product.product.users_who_have_rated.includes(userId);
+        if (changeRating) {
+            if (userId) {
+                const isUserRated =
+                    product.users_who_have_rated.includes(userId);
 
-            if (isUserRated) {
-                if (isActiveStars) isActiveStars(false);
-            } else {
-                setStatusRating(0);
+                if (isUserRated) {
+                    if (isActiveStars) isActiveStars(false);
+                } else {
+                    setStatusRating(0);
+                }
             }
-        } else {
-            if (isActiveStars) isActiveStars(false);
         }
         const averageNumberRating =
-            product.product.number_all_stars /
-            product.product.users_who_have_rated.length;
+            product.number_all_stars / product.users_who_have_rated.length;
         if (averageNumberRating) {
             const ratingPercentage = (averageNumberRating * 100) / 5;
             setStatusRating(ratingPercentage);
@@ -58,30 +55,35 @@ const StarsRating: FC<starsRatingType> = ({
         <StarsRatingStyle>
             <StatusStyle $statusRating={statusRating} />
             <WSStarRating
+                imageStar={imageStar}
                 changeRating={changeRating}
                 onClick={() => {
                     if (changeRating) changeProductRating(1);
                 }}
             />
             <WSStarRating
+                imageStar={imageStar}
                 changeRating={changeRating}
                 onClick={() => {
                     if (changeRating) changeProductRating(2);
                 }}
             />
             <WSStarRating
+                imageStar={imageStar}
                 changeRating={changeRating}
                 onClick={() => {
                     if (changeRating) changeProductRating(3);
                 }}
             />
             <WSStarRating
+                imageStar={imageStar}
                 changeRating={changeRating}
                 onClick={() => {
                     if (changeRating) changeProductRating(4);
                 }}
             />
             <WSStarRating
+                imageStar={imageStar}
                 changeRating={changeRating}
                 onClick={() => {
                     if (changeRating) changeProductRating(5);
