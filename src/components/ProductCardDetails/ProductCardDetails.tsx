@@ -1,10 +1,13 @@
 import React, { FC, useState } from "react";
 import {
+    ContainerButtonStyle,
+    ContainerIconShareStyle,
     ContainerImagesStyle,
     ContainerInfoStyle,
     ContainerInputStyle,
     ContainerProductCardDetailsStyle,
     ContainerReviewStyle,
+    ContainerShareStyle,
     ContainerStarsStyle,
     NumberRatingStyle,
     OldPriceStyle,
@@ -20,6 +23,11 @@ import { formatPrice } from "../../utils/formatPrice";
 import StarsRating from "../StarsRating/StarsRating";
 import WSButtonCountProducts from "../UI/WSButtonCountProducts/WSButtonCountProducts";
 import WSSelect from "../UI/WSSelect/WSSelect";
+import WSButton from "../UI/WSButton/WSButton";
+import { BiLogoFacebook } from "react-icons/bi";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 
 const ProductCardDetails: FC<{
     product: product;
@@ -71,6 +79,40 @@ const ProductCardDetails: FC<{
                         <WSSelect nameSelect="Size" options={product.sizes} />
                         <WSSelect nameSelect="Color" options={product.color} />
                     </ContainerInputStyle>
+                    <ContainerButtonStyle>
+                        <WSButton upper onClick={() => {}}>
+                            add to cart
+                        </WSButton>
+                        <WSButton upper onClick={() => {}}>
+                            add to wishlist
+                        </WSButton>
+                    </ContainerButtonStyle>
+                    <ContainerShareStyle>
+                        <span>SHARE</span>
+                        <ContainerIconShareStyle>
+                            <a
+                                href="https://www.facebook.com/?locale=uk_UA"
+                                target="_blank"
+                            >
+                                <BiLogoFacebook />
+                            </a>
+                            <a
+                                href="https://twitter.com/i/flow/login"
+                                target="_blank"
+                            >
+                                <FaXTwitter />
+                            </a>
+                            <a
+                                href="https://www.linkedin.com/feed/"
+                                target="_blank"
+                            >
+                                <FaLinkedinIn />
+                            </a>
+                            <a href="https://www.google.com/" target="_blank">
+                                <FaGoogle />
+                            </a>
+                        </ContainerIconShareStyle>
+                    </ContainerShareStyle>
                 </ContainerInfoStyle>
             </ContainerProductCardDetailsStyle>
         </ProductCardDetailsStyle>

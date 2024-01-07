@@ -65,3 +65,53 @@ export const ContainerInputStyle = styled.div`
     margin-top: 40px;
     gap: 30px;
 `;
+
+export const ContainerButtonStyle = styled.div`
+    display: flex;
+    gap: 15px;
+    margin-top: 50px;
+    & > button {
+        padding: 10px 15px;
+        background-color: transparent;
+        color: ${() => theme.color.main};
+        border: 2px solid ${() => theme.color.main};
+        &:hover {
+            background-color: ${() => theme.color.main};
+            color: ${() => theme.color.base};
+        }
+    }
+`;
+
+export const ContainerShareStyle = styled.div`
+    margin-top: 50px;
+    & > span {
+        width: max-content;
+        display: block;
+        position: relative;
+        color: ${() => theme.color.navMenuLink};
+        &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: -10px;
+            left: 0;
+            background-color: ${() => theme.color.main};
+        }
+    }
+`;
+
+export const ContainerIconShareStyle = styled.div`
+    margin-top: 40px;
+    display: flex;
+    gap: 25px;
+    position: relative;
+    left: -6px;
+    & > a {
+        font-size: 1.5rem;
+        color: ${() => theme.color.navMenuLink};
+        &:hover {
+            color: ${() => theme.color.main};
+        }
+    }
+`;
