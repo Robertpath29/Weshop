@@ -7,6 +7,7 @@ import ProductCardDetails from "../../components/ProductCardDetails/ProductCardD
 import { useParams } from "react-router-dom";
 import { useGetOneProductQuery } from "../../redux/store/products/products.api";
 import Loading from "../../components/Loading/Loading";
+import ProductCardInfo from "../../components/ProductCardInfo/ProductCardInfo";
 
 const ProductPage = () => {
     const idProduct = useParams();
@@ -22,10 +23,13 @@ const ProductPage = () => {
             ) : (
                 data?.product &&
                 data?.paths_img && (
-                    <ProductCardDetails
-                        product={data.product}
-                        images={data.paths_img}
-                    />
+                    <>
+                        <ProductCardDetails
+                            product={data.product}
+                            images={data.paths_img}
+                        />
+                        <ProductCardInfo product={data.product} />
+                    </>
                 )
             )}
         </ProductPageStyle>

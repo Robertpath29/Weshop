@@ -40,6 +40,9 @@ export type product = {
     id: number;
     title: string;
     description: string;
+    extended_description: string;
+    history: string;
+    compositions: string[];
     category: string;
     type_of_clothing: string;
     color: string;

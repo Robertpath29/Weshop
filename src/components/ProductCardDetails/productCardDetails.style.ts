@@ -7,7 +7,8 @@ export const ProductCardDetailsStyle = styled.div`
 export const ContainerProductCardDetailsStyle = styled.div`
     max-width: ${() => theme.size.globalWidth + "px"};
     margin: 0 auto;
-    padding-top: 70px;
+    padding-top: 80px;
+    padding-bottom: 80px;
     display: flex;
 `;
 export const ContainerImagesStyle = styled.div``;
