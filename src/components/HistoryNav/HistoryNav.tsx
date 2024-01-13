@@ -7,7 +7,7 @@ import { IoIosArrowForward } from "react-icons/io";
 const HistoryNav: FC<{ colorBackground?: string }> = ({ colorBackground }) => {
     const location = useLocation();
     const pathnames = location.pathname.split("/").filter((x) => x);
-
+    let prevName = "";
     return (
         <HistoryNavStyle $colorBackground={colorBackground}>
             <ul>
@@ -15,6 +15,8 @@ const HistoryNav: FC<{ colorBackground?: string }> = ({ colorBackground }) => {
                     <Link to={"/"}>Home</Link>
                 </li>
                 {pathnames.map((name, index) => {
+                    if (prevName === name) return;
+                    prevName = name;
                     let numberLength = 0;
                     if (Number(pathnames[pathnames.length - 1])) {
                         numberLength = 2;

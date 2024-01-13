@@ -11,4 +11,5 @@ export type WSInputType = {
     multiple?: boolean;
     name?: string;
     checked?: boolean;
+    max?: number;
 };

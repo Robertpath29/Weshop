@@ -47,3 +47,19 @@ export const TitleStyle = styled.h1<{ $error?: string }>`
     margin-bottom: 10px;
     color: ${({ $error }) => ($error ? "red !important" : theme.color.main)};
 `;
+
+export const ContainerCompositionStyle = styled.div`
+    & > hr {
+        width: 100%;
+        margin-left: 0;
+    }
+    display: flex;
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+    & > label {
+        color: ${() => theme.color.main};
+    }
+`;

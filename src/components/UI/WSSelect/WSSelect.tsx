@@ -8,7 +8,9 @@ const WSSelect: FC<WSSelectType> = ({ nameSelect, options }) => {
             <option value={nameSelect}>{nameSelect}</option>
             {Array.isArray(options) ? (
                 options.map((option) => (
-                    <option value={option}>{option}</option>
+                    <option key={option} value={option}>
+                        {option}
+                    </option>
                 ))
             ) : (
                 <option value={options}>{options}</option>

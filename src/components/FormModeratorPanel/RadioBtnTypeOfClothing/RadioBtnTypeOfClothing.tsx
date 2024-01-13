@@ -125,6 +125,7 @@ const RadioBtnTypeOfClothing: FC<{
                 >
                     <option value="">--------</option>
                     <option value="sunglasses">sunglasses</option>
+                    <option value="bags">bags</option>
                 </select>
             </ContainerInput>
         </RadioBtnTypeOfClothingStyle>

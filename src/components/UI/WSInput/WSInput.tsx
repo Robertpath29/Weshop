@@ -15,6 +15,7 @@ const WSInput: FC<WSInputType> = ({
     multiple,
     name,
     checked,
+    max,
 }) => {
     return (
         <WSInputStyle
@@ -30,6 +31,7 @@ const WSInput: FC<WSInputType> = ({
             multiple={multiple}
             name={name}
             checked={checked}
+            max={max}
         ></WSInputStyle>
     );
 };
