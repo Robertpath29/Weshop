@@ -23,11 +23,13 @@ const BestSaleCard: FC<{ product: products }> = ({ product }) => {
                 </ContainerImageStyle>
                 <ContainerInfoStyle>
                     <h1>{product.product.title}</h1>
-                    <StarsRating
-                        imageStar="/images/StarSVG.svg"
-                        changeRating={false}
-                        product={product.product}
-                    />
+                    {product.product.number_all_stars !== 0 && (
+                        <StarsRating
+                            imageStar="/images/StarSVG.svg"
+                            changeRating={false}
+                            product={product.product}
+                        />
+                    )}
                     <ContainerPrice>
                         {product.product.old_price && (
                             <OldPriceStyle>
