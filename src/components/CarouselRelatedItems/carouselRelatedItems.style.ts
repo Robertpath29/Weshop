@@ -6,6 +6,7 @@ export const ContainerCarouselRelatedItemsStyle = styled.div`
         width: ${() => theme.size.globalWidth + 200 + "px"};
         padding: 0 100px;
         overflow: visible;
+        margin-bottom: 100px;
         &::before {
             content: "";
             position: absolute;

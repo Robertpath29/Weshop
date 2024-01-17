@@ -12,6 +12,7 @@ import {
 import Loading from "../../components/Loading/Loading";
 import ProductCardInfo from "../../components/ProductCardInfo/ProductCardInfo";
 import CarouselRelatedItems from "../../components/CarouselRelatedItems/CarouselRelatedItems";
+import Sponsors from "../../components/Sponsors/Sponsors";
 
 const ProductPage = () => {
     const idProduct = useParams();
@@ -59,6 +60,7 @@ const ProductPage = () => {
                     </>
                 )
             )}
+            <Sponsors />
         </ProductPageStyle>
     );
 };
