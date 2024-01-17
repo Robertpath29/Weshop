@@ -12,8 +12,6 @@ const CarouselRelatedItems: FC<{
     dataProducts: responseType | undefined;
     dataOneProduct: responseType | undefined;
 }> = ({ dataProducts, dataOneProduct }) => {
-    console.log(dataProducts?.products);
-
     return (
         <ContainerCarouselRelatedItemsStyle>
             <h1>Related items</h1>

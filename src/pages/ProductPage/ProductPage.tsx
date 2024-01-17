@@ -13,6 +13,7 @@ import Loading from "../../components/Loading/Loading";
 import ProductCardInfo from "../../components/ProductCardInfo/ProductCardInfo";
 import CarouselRelatedItems from "../../components/CarouselRelatedItems/CarouselRelatedItems";
 import Sponsors from "../../components/Sponsors/Sponsors";
+import Footer from "../../components/Footer/Footer";
 
 const ProductPage = () => {
     const idProduct = useParams();
@@ -61,6 +62,7 @@ const ProductPage = () => {
                 )
             )}
             <Sponsors />
+            <Footer />
         </ProductPageStyle>
     );
 };
