@@ -5,6 +5,7 @@ export const RelatedItemsStyle = styled.div`
     position: relative;
     .imagesRelatedItems {
         width: 100%;
+        cursor: alias;
     }
     & > div {
         position: absolute;
