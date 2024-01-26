@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {
-    ContainerNewsletterFeedback,
+    ContainerFeedbackStyle,
+    ContainerInputBtnStyle,
+    ContainerNewsletterFeedbackStyle,
     ContainerNewsletterStyle,
     ContainerTrendingRatedUpdatedStyle,
     NewsletterStyle,
@@ -14,6 +16,10 @@ import NewsletterProduct from "./NewsletterProduct/NewsletterProduct";
 import { useGetProductsQuery } from "../../redux/store/products/products.api";
 import { products } from "../../types/response.types";
 import Loading from "../Loading/Loading";
+import WSInput from "../UI/WSInput/WSInput";
+import { GoArrowRight } from "react-icons/go";
+import Sponsors from "../Sponsors/Sponsors";
+import Footer from "../Footer/Footer";
 
 const Newsletter = () => {
     const [arrayTopRated, setArrayTopRated] = useState<products[]>([]);
@@ -113,8 +119,28 @@ const Newsletter = () => {
                         </UpdatedGroupStyle>
                     </ContainerTrendingRatedUpdatedStyle>
                 )}
-                <ContainerNewsletterFeedback></ContainerNewsletterFeedback>
+                <ContainerNewsletterFeedbackStyle>
+                    <img
+                        src="/images/background_login.jpeg"
+                        alt="images feedback"
+                    />
+                    <ContainerFeedbackStyle>
+                        <h1>Newsletter</h1>
+                        <span>we are promising, we will not spam</span>
+                        <ContainerInputBtnStyle>
+                            <WSInput
+                                type="email"
+                                placeholder="Enter your email"
+                            />
+                            <button>
+                                <GoArrowRight />
+                            </button>
+                        </ContainerInputBtnStyle>
+                    </ContainerFeedbackStyle>
+                </ContainerNewsletterFeedbackStyle>
             </ContainerNewsletterStyle>
+            <Sponsors />
+            <Footer />
         </NewsletterStyle>
     );
 };
