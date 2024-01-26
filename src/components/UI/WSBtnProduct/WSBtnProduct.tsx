@@ -12,13 +12,14 @@ const WSBtnProduct: FC<wSBtnBasketType> = ({
     SvgIcon,
     textAdd,
     onClick,
+    right,
 }) => {
     return (
         <WSBtnBasketStyle $active={active} onClick={onClick}>
             <ContainerBtnStyle $active={active}>
                 <SvgIcon />
             </ContainerBtnStyle>
-            <ContainerBtnTxtStyle $active={active}>
+            <ContainerBtnTxtStyle $active={active} $right={right}>
                 <TextStyle>{textAdd}</TextStyle>
             </ContainerBtnTxtStyle>
         </WSBtnBasketStyle>

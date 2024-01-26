@@ -5,4 +5,5 @@ export type wSBtnBasketType = {
     SvgIcon: IconType;
     textAdd: string;
     onClick: () => void;
+    right?: boolean;
 };

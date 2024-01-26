@@ -61,6 +61,7 @@ export const ContainerPrice = styled.div`
     margin-top: 10px;
     display: flex;
     align-items: center;
+    color: ${() => theme.color.main};
 `;
 
 export const ContainerBlockBasketStyle = styled.div`

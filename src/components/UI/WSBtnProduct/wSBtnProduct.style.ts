@@ -39,14 +39,18 @@ export const ContainerBtnStyle = styled.div<{ $active: boolean }>`
         left: -5px;
     }
 `;
-export const ContainerBtnTxtStyle = styled.div<{ $active: boolean }>`
+export const ContainerBtnTxtStyle = styled.div<{
+    $active: boolean;
+    $right?: boolean;
+}>`
     height: 100%;
     width: ${({ $active }) => ($active ? "130px" : "0")};
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    left: ${({ $active }) => ($active ? "-130px" : "0")};
+    left: ${({ $active, $right }) => !$right && ($active ? "-130px" : "0")};
+    right: ${({ $active, $right }) => ($right && $active ? "-130px" : "0")};
     background-color: ${() => theme.color.main};
     border-right: ${({ $active }) => ($active ? "1px solid gray" : "none")};
     color: ${() => theme.color.base};

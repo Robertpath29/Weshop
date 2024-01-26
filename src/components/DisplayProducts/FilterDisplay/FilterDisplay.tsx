@@ -114,12 +114,15 @@ const FilterDisplay: FC<{
             <hr />
             <ContainerBestSaleStyle>
                 {best_sale ? (
-                    best_sale.map((product) => (
-                        <BestSaleCard
-                            product={product}
-                            key={product.product.id}
-                        />
-                    ))
+                    best_sale.map((product, index) => {
+                        if (index > 1) return;
+                        return (
+                            <BestSaleCard
+                                product={product}
+                                key={product.product.id}
+                            />
+                        );
+                    })
                 ) : (
                     <Loading />
                 )}

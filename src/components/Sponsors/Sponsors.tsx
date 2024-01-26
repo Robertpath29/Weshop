@@ -16,7 +16,7 @@ const Sponsors = () => {
                     modules={[Autoplay]}
                     spaceBetween={10}
                     slidesPerView={6}
-                    loop={true}
+                    loop={false}
                     speed={2000}
                     autoplay={{ delay: 3000, disableOnInteraction: false }}
                     simulateTouch={false}
