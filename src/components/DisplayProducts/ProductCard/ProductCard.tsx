@@ -28,6 +28,8 @@ import { ContainerPriceStyle } from "../../UI/WSBtnProduct/wSBtnProduct.style";
 import { LiaEye } from "react-icons/lia";
 import StarsRating from "../../StarsRating/StarsRating";
 import { useNavigate } from "react-router-dom";
+import { useAction } from "../../../hooks/useAction";
+import { addNewProductToBasket } from "../../../utils/addNewProductToBasket";
 
 const ProductCard: FC<{
     product: products;
@@ -37,8 +39,10 @@ const ProductCard: FC<{
     const [activeFavorites, isActiveFavorites] = useState(false);
     const [activeView, isActiveView] = useState(false);
     const [numberRating, setNumberRating] = useState("");
+    const { addNewProduct } = useAction();
 
     const routeProduct = useNavigate();
+
     return (
         <ProductCardStyle
             $prodDisplay={productDisplay}
@@ -98,7 +102,9 @@ const ProductCard: FC<{
                             SvgIcon={SlBasket}
                             active={activeBasket}
                             textAdd="Add to cart"
-                            onClick={() => {}}
+                            onClick={() => {
+                                addNewProductToBasket(product, addNewProduct);
+                            }}
                         />
                     </ContainerBlockBasketStyle>
                 </ContainerBlockStyle>
@@ -186,7 +192,12 @@ const ProductCard: FC<{
                                     SvgIcon={SlBasket}
                                     active={true}
                                     textAdd="Add to cart"
-                                    onClick={() => {}}
+                                    onClick={() => {
+                                        addNewProductToBasket(
+                                            product,
+                                            addNewProduct
+                                        );
+                                    }}
                                 />
                             </ContainerListBasketStyle>
                         </ContainerGroupBtnStyle>

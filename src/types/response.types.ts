@@ -10,7 +10,7 @@ export type responseType = {
     images?: image[];
     products?: products[];
     product?: product;
-    paths_img?: path_img[];
+    path_img?: path_img[];
     total_pages?: number;
     oll_category?: string[];
     max_price?: string;

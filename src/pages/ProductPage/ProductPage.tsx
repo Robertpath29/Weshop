@@ -41,11 +41,11 @@ const ProductPage = () => {
                 <Loading />
             ) : (
                 dataOneProduct?.product &&
-                dataOneProduct?.paths_img && (
+                dataOneProduct?.path_img && (
                     <>
                         <ProductCardDetails
                             product={dataOneProduct.product}
-                            images={dataOneProduct.paths_img}
+                            images={dataOneProduct.path_img}
                         />
                         <ProductCardInfo product={dataOneProduct.product} />
                         {loadingProducts ? (
